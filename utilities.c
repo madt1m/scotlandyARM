@@ -3,10 +3,10 @@
 
 void debug(char* message){
 	if(debug){
-		printLine(message);
+		//printLine(message);
 	}
 }
 
 char getCharCode(uint8_t input){
-	
+		return 'c';
 }

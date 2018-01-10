@@ -4,5 +4,8 @@
 * into a 8 bit variable.
 */
 
+#include <stdint.h>
+
 // Get value
-uint8_t getInput();
+uint8_t joystickRead();
+void joystickInit();

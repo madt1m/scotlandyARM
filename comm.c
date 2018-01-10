@@ -6,18 +6,18 @@
 * The packet is sent via Ethernet to a server which checks the password and
 * returns to the board the outcome, together with some custom messages. (Autodestruction REMEMBAH)
 */
-
+/*
 #include "lpc17xx.h"
 #include "joystick.h"
 #include "display.h"
-#include "channel.h"
+//#include "channel.h"
 #include "utilities.h"
 #define PASSWORD_LENGTH 8;
 #define MAX_READ 1024;
 
 int main(){
 	
-	while(true){
+	while(1){
 		uint8_t joystick_input = 0b00000000; 
 		uint8_t button_pressed = 0b00010000;  // This stands for the end of input phase
 		int count = 0;  					  // Avoids password with length more than PASSWORD_LENGTH
@@ -25,7 +25,7 @@ int main(){
 		char buffer[MAX_READ];
 		char password[PASSWORD_LENGTH];
 		debug("Insert Password\n");
-		while(joystick_input != button_pressed && count < PASSWORD_LENGTH){
+		while((joystick_input != button_pressed) && (count < PASSWORD_LENGTH)){
 			joystick_input = getInput();
 			password[count] = getCharCode(joystick_input);
 			count++;
@@ -52,3 +52,4 @@ int main(){
 		printLine(buffer);		
 	}
 }
+*/
