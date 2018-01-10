@@ -1,19 +1,30 @@
 Dependencies for Project 'scotlandyARMp', Target 'ARMA': (DO NOT MODIFY !)
-F (.\scotlandyARM\channel.c)(0x5A54CA21)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\channel.o --omf_browse .\objects\channel.crf --depend .\objects\channel.d)
-F (.\scotlandyARM\comm.c)(0x5A562023)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\comm.o --omf_browse .\objects\comm.crf --depend .\objects\comm.d)
-F (.\scotlandyARM\display.c)(0x5A54C988)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\display.o --omf_browse .\objects\display.crf --depend .\objects\display.d)
-F (.\scotlandyARM\joystick.c)(0x5A54C926)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\joystick.o --omf_browse .\objects\joystick.crf --depend .\objects\joystick.d)
-F (.\scotlandyARM\test.c)(0x5A563C9D)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\test.o --omf_browse .\objects\test.crf --depend .\objects\test.d)
+F (.\system_LPC17xx.h)(0x5A5656EE)()
+F (.\system_LPC17xx.c)(0x5A565BCE)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\system_lpc17xx.o --omf_browse .\objects\system_lpc17xx.crf --depend .\objects\system_lpc17xx.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
+I (LPC17xx.h)(0x5A5656EE)
+I (core_cm3.h)(0x5A5656EE)
+I (system_LPC17xx.h)(0x5A5656EE)
+F (.\LPC17xx.h)(0x5A5656EE)()
+F (.\core_cm3.c)(0x5A5656EE)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
+F (.\core_cm3.h)(0x5A5656EE)()
+F (.\funct_joystick.c)(0x5A56577A)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\funct_joystick.o --omf_browse .\objects\funct_joystick.crf --depend .\objects\funct_joystick.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-F (.\scotlandyARM\utilities.c)(0x5A562389)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\utilities.o --omf_browse .\objects\utilities.crf --depend .\objects\utilities.d)
-I (scotlandyARM\utilities.h)(0x5A5621E2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (scotlandyARM\display.h)(0x5A562266)
-F (.\scotlandyARM\channel.h)(0x5A56221E)()
-F (.\scotlandyARM\display.h)(0x5A562266)()
-F (.\scotlandyARM\joystick.h)(0x5A5621EB)()
-F (.\scotlandyARM\utilities.h)(0x5A5621E2)()
-F (.\scotlandyARM\CMSIS\core_cm3.c)(0x5A2EB583)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\core_cm3.o --omf_browse .\objects\core_cm3.crf --depend .\objects\core_cm3.d)
+I (lpc17xx.h)(0x5A5656EE)
+I (core_cm3.h)(0x5A5656EE)
+I (system_LPC17xx.h)(0x5A5656EE)
+F (.\lib_joystick.c)(0x5A565A9C)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\lib_joystick.o --omf_browse .\objects\lib_joystick.crf --depend .\objects\lib_joystick.d)
+I (lpc17xx.h)(0x5A5656EE)
+I (core_cm3.h)(0x5A5656EE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-F (.\scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s)(0x5A2EB584)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 525" --pd "LPC175x_6x SETA 1"--list .\listings\startup_lpc17xx.lst --xref -o .\objects\startup_lpc17xx.o --depend .\objects\startup_lpc17xx.d)
+I (system_LPC17xx.h)(0x5A5656EE)
+F (.\joystick.h)(0x5A5656EE)()
+F (.\test.c)(0x5A565C2C)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DLPC175x_6x-o .\objects\test.o --omf_browse .\objects\test.crf --depend .\objects\test.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
+I (joystick.h)(0x5A5656EE)
+F (.\CMSIS\startup\arm\startup_LPC17xx.s)(0x5A5656EE)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_ARMA-IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 525" --pd "LPC175x_6x SETA 1"--list .\listings\startup_lpc17xx.lst --xref -o .\objects\startup_lpc17xx.o --depend .\objects\startup_lpc17xx.d)

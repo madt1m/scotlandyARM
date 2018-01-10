@@ -257,17 +257,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -277,7 +277,7 @@
                 <Size>0x80000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -378,77 +378,72 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source</GroupName>
+          <GroupName>CMSIS</GroupName>
           <Files>
             <File>
-              <FileName>channel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\channel.c</FilePath>
+              <FileName>system_LPC17xx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\system_LPC17xx.h</FilePath>
             </File>
             <File>
-              <FileName>comm.c</FileName>
+              <FileName>system_LPC17xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\comm.c</FilePath>
+              <FilePath>.\system_LPC17xx.c</FilePath>
             </File>
             <File>
-              <FileName>display.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\display.c</FilePath>
+              <FileName>LPC17xx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LPC17xx.h</FilePath>
             </File>
             <File>
-              <FileName>joystick.c</FileName>
+              <FileName>core_cm3.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\joystick.c</FilePath>
+              <FilePath>.\core_cm3.c</FilePath>
             </File>
             <File>
-              <FileName>test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\test.c</FilePath>
-            </File>
-            <File>
-              <FileName>utilities.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\utilities.c</FilePath>
+              <FileName>core_cm3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\core_cm3.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Headers</GroupName>
+          <GroupName>Joystick</GroupName>
           <Files>
             <File>
-              <FileName>channel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\scotlandyARM\channel.h</FilePath>
+              <FileName>funct_joystick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\funct_joystick.c</FilePath>
             </File>
             <File>
-              <FileName>display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\scotlandyARM\display.h</FilePath>
+              <FileName>lib_joystick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib_joystick.c</FilePath>
             </File>
             <File>
               <FileName>joystick.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\scotlandyARM\joystick.h</FilePath>
-            </File>
-            <File>
-              <FileName>utilities.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\scotlandyARM\utilities.h</FilePath>
+              <FilePath>.\joystick.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>CMSIS</GroupName>
+          <GroupName>main</GroupName>
           <Files>
             <File>
-              <FileName>core_cm3.c</FileName>
+              <FileName>test.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\scotlandyARM\CMSIS\core_cm3.c</FilePath>
+              <FilePath>.\test.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>startup</GroupName>
+          <Files>
             <File>
               <FileName>startup_LPC17xx.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s</FilePath>
+              <FilePath>.\CMSIS\startup\arm\startup_LPC17xx.s</FilePath>
             </File>
           </Files>
         </Group>

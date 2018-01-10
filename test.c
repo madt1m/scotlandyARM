@@ -7,13 +7,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include "joystick.h"
+
 
 int main(){
 
+	uint8_t val;
+	uint8_t password[10];
+	int i = 0;
+	joystickInit();
 	while(1) {
-
-		value = joystickRead();
-
+		val = joystickRead();
+		password[i] = val;
+		i++;
 	}
-
 }

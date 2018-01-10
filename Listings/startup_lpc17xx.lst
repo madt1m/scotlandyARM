@@ -417,8 +417,8 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\objects\startup_lpc17xx.d -o.\objects\startup_lpc17xx.o -I.\RTE\
 _ARMA -IC:\Keil_v5\ARM\PACK\Keil\LPC1700_DFP\2.4.0\Device\Include -IC:\Keil_v5\
 ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SE
-TA 525" --predefine="LPC175x_6x SETA 1" --list=.\listings\startup_lpc17xx.lst s
-cotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+TA 525" --predefine="LPC175x_6x SETA 1" --list=.\listings\startup_lpc17xx.lst C
+MSIS\startup\arm\startup_LPC17xx.s
 
 
 
@@ -429,7 +429,7 @@ STACK 00000000
 
 Symbol: STACK
    Definitions
-      At line 29 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 29 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: STACK unused
@@ -437,18 +437,18 @@ Stack_Mem 00000000
 
 Symbol: Stack_Mem
    Definitions
-      At line 30 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 30 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 267 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 269 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 267 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 269 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 __initial_sp 00000200
 
 Symbol: __initial_sp
    Definitions
-      At line 31 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 31 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 55 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 55 in file CMSIS\startup\arm\startup_LPC17xx.s
 Comment: __initial_sp used once
 3 symbols
 
@@ -461,7 +461,7 @@ HEAP 00000000
 
 Symbol: HEAP
    Definitions
-      At line 40 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 40 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: HEAP unused
@@ -469,16 +469,16 @@ Heap_Mem 00000000
 
 Symbol: Heap_Mem
    Definitions
-      At line 42 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 42 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 266 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 268 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 266 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 268 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
-      At line 41 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 41 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: __heap_base unused
@@ -486,7 +486,7 @@ __heap_limit 00000000
 
 Symbol: __heap_limit
    Definitions
-      At line 43 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 43 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: __heap_limit unused
@@ -501,7 +501,7 @@ RESET 00000000
 
 Symbol: RESET
    Definitions
-      At line 52 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 52 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: RESET unused
@@ -509,9 +509,9 @@ __Vectors 00000000
 
 Symbol: __Vectors
    Definitions
-      At line 55 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 55 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 53 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 53 in file CMSIS\startup\arm\startup_LPC17xx.s
 Comment: __Vectors used once
 2 symbols
 
@@ -524,7 +524,7 @@ Relocatable symbols
 
 Symbol: .ARM.__at_0x02FC
    Definitions
-      At line 109 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 109 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: .ARM.__at_0x02FC unused
@@ -532,7 +532,7 @@ CRP_Key 00000000
 
 Symbol: CRP_Key
    Definitions
-      At line 110 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 110 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: CRP_Key unused
@@ -547,7 +547,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 114 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 114 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: .text unused
@@ -555,52 +555,52 @@ ADC_IRQHandler 0000001A
 
 Symbol: ADC_IRQHandler
    Definitions
-      At line 232 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 232 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 95 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 198 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 95 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 198 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 BOD_IRQHandler 0000001A
 
 Symbol: BOD_IRQHandler
    Definitions
-      At line 233 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 233 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 96 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 199 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 96 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 199 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 BusFault_Handler 0000000E
 
 Symbol: BusFault_Handler
    Definitions
-      At line 147 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 147 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 60 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 148 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 60 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 148 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 CAN_IRQHandler 0000001A
 
 Symbol: CAN_IRQHandler
    Definitions
-      At line 235 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 235 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 98 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 201 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 98 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 201 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 DMA_IRQHandler 0000001A
 
 Symbol: DMA_IRQHandler
    Definitions
-      At line 236 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 236 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 99 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 202 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 99 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 202 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 DebugMon_Handler 00000014
 
 Symbol: DebugMon_Handler
    Definitions
-      At line 161 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 161 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
 
 
@@ -608,14 +608,14 @@ Symbol: DebugMon_Handler
 ARM Macro Assembler    Page 2 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 67 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 162 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 67 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 162 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 Default_Handler 0000001A
 
 Symbol: Default_Handler
    Definitions
-      At line 174 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 174 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: Default_Handler unused
@@ -623,46 +623,46 @@ EINT0_IRQHandler 0000001A
 
 Symbol: EINT0_IRQHandler
    Definitions
-      At line 228 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 228 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 91 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 194 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 91 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 194 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 EINT1_IRQHandler 0000001A
 
 Symbol: EINT1_IRQHandler
    Definitions
-      At line 229 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 229 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 92 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 195 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 92 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 195 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 EINT2_IRQHandler 0000001A
 
 Symbol: EINT2_IRQHandler
    Definitions
-      At line 230 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 230 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 93 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 196 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 93 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 196 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 EINT3_IRQHandler 0000001A
 
 Symbol: EINT3_IRQHandler
    Definitions
-      At line 231 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 231 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 94 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 197 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 94 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 197 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 ENET_IRQHandler 0000001A
 
 Symbol: ENET_IRQHandler
    Definitions
-      At line 238 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 238 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 101 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 204 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 101 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 204 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 HardFault_Handler 0000000A
 
@@ -674,64 +674,64 @@ ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Relocatable symbols
 
    Definitions
-      At line 137 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 137 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 58 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 138 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 58 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 138 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 I2C0_IRQHandler 0000001A
 
 Symbol: I2C0_IRQHandler
    Definitions
-      At line 220 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 220 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 83 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 186 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 83 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 186 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 I2C1_IRQHandler 0000001A
 
 Symbol: I2C1_IRQHandler
    Definitions
-      At line 221 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 221 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 84 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 187 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 84 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 187 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 I2C2_IRQHandler 0000001A
 
 Symbol: I2C2_IRQHandler
    Definitions
-      At line 222 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 222 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 85 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 188 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 85 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 188 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 I2S_IRQHandler 0000001A
 
 Symbol: I2S_IRQHandler
    Definitions
-      At line 237 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 237 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 100 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 203 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 100 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 203 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 MCPWM_IRQHandler 0000001A
 
 Symbol: MCPWM_IRQHandler
    Definitions
-      At line 240 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 240 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 103 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 206 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 103 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 206 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 MemManage_Handler 0000000C
 
 Symbol: MemManage_Handler
    Definitions
-      At line 142 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 142 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 59 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 143 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 59 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 143 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 
 
@@ -743,55 +743,55 @@ NMI_Handler 00000008
 
 Symbol: NMI_Handler
    Definitions
-      At line 132 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 132 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 57 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 133 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 57 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 133 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 PLL0_IRQHandler 0000001A
 
 Symbol: PLL0_IRQHandler
    Definitions
-      At line 226 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 226 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 89 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 192 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 89 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 192 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 PLL1_IRQHandler 0000001A
 
 Symbol: PLL1_IRQHandler
    Definitions
-      At line 242 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 242 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 105 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 208 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 105 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 208 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 PWM1_IRQHandler 0000001A
 
 Symbol: PWM1_IRQHandler
    Definitions
-      At line 219 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 219 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 82 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 185 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 82 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 185 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 PendSV_Handler 00000016
 
 Symbol: PendSV_Handler
    Definitions
-      At line 165 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 165 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 69 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 166 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 69 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 166 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 QEI_IRQHandler 0000001A
 
 Symbol: QEI_IRQHandler
    Definitions
-      At line 241 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 241 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 104 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 207 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 104 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 207 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 RIT_IRQHandler 0000001A
 
@@ -803,64 +803,64 @@ Symbol: RIT_IRQHandler
 ARM Macro Assembler    Page 5 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 239 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 239 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 102 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 205 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 102 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 205 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 RTC_IRQHandler 0000001A
 
 Symbol: RTC_IRQHandler
    Definitions
-      At line 227 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 227 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 90 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 193 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 90 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 193 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 Reset_Handler 00000000
 
 Symbol: Reset_Handler
    Definitions
-      At line 119 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 119 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 56 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 120 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 56 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 120 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 SPI_IRQHandler 0000001A
 
 Symbol: SPI_IRQHandler
    Definitions
-      At line 223 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 223 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 86 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 189 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 86 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 189 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 SSP0_IRQHandler 0000001A
 
 Symbol: SSP0_IRQHandler
    Definitions
-      At line 224 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 224 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 87 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 190 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 87 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 190 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 SSP1_IRQHandler 0000001A
 
 Symbol: SSP1_IRQHandler
    Definitions
-      At line 225 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 225 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 88 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 191 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 88 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 191 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 SVC_Handler 00000012
 
 Symbol: SVC_Handler
    Definitions
-      At line 156 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 156 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 66 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 157 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 66 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 157 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 
 
@@ -872,61 +872,61 @@ SysTick_Handler 00000018
 
 Symbol: SysTick_Handler
    Definitions
-      At line 169 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 169 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 70 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 170 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 70 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 170 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 TIMER0_IRQHandler 0000001A
 
 Symbol: TIMER0_IRQHandler
    Definitions
-      At line 211 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 211 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 74 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 177 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 74 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 177 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 TIMER1_IRQHandler 0000001A
 
 Symbol: TIMER1_IRQHandler
    Definitions
-      At line 212 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 212 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 75 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 178 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 75 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 178 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 TIMER2_IRQHandler 0000001A
 
 Symbol: TIMER2_IRQHandler
    Definitions
-      At line 213 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 213 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 76 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 179 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 76 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 179 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 TIMER3_IRQHandler 0000001A
 
 Symbol: TIMER3_IRQHandler
    Definitions
-      At line 214 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 214 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 77 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 180 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 77 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 180 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 UART0_IRQHandler 0000001A
 
 Symbol: UART0_IRQHandler
    Definitions
-      At line 215 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 215 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 78 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 181 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 78 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 181 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 UART1_IRQHandler 0000001A
 
 Symbol: UART1_IRQHandler
    Definitions
-      At line 216 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 216 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 
 
@@ -934,61 +934,61 @@ ARM Macro Assembler    Page 7 Alphabetic symbol ordering
 Relocatable symbols
 
    Uses
-      At line 79 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 182 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 79 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 182 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 UART2_IRQHandler 0000001A
 
 Symbol: UART2_IRQHandler
    Definitions
-      At line 217 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 217 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 80 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 183 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 80 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 183 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 UART3_IRQHandler 0000001A
 
 Symbol: UART3_IRQHandler
    Definitions
-      At line 218 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 218 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 81 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 184 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 81 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 184 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 USB_IRQHandler 0000001A
 
 Symbol: USB_IRQHandler
    Definitions
-      At line 234 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 234 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 97 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 200 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 97 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 200 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 UsageFault_Handler 00000010
 
 Symbol: UsageFault_Handler
    Definitions
-      At line 152 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 152 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 61 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 153 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 61 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 153 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 WDT_IRQHandler 0000001A
 
 Symbol: WDT_IRQHandler
    Definitions
-      At line 210 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 210 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 73 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 176 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 73 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 176 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 __user_initial_stackheap 0000001C
 
 Symbol: __user_initial_stackheap
    Definitions
-      At line 264 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 264 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 263 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 263 in file CMSIS\startup\arm\startup_LPC17xx.s
 Comment: __user_initial_stackheap used once
 46 symbols
 
@@ -1001,19 +1001,19 @@ Heap_Size 00000000
 
 Symbol: Heap_Size
    Definitions
-      At line 38 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 38 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 42 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 268 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 42 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 268 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 Stack_Size 00000200
 
 Symbol: Stack_Size
    Definitions
-      At line 27 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 27 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 30 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
-      At line 267 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 30 in file CMSIS\startup\arm\startup_LPC17xx.s
+      At line 267 in file CMSIS\startup\arm\startup_LPC17xx.s
 
 2 symbols
 
@@ -1026,23 +1026,23 @@ SystemInit 00000000
 
 Symbol: SystemInit
    Definitions
-      At line 121 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 121 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 123 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 123 in file CMSIS\startup\arm\startup_LPC17xx.s
 Comment: SystemInit used once
 __main 00000000
 
 Symbol: __main
    Definitions
-      At line 122 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 122 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
-      At line 125 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 125 in file CMSIS\startup\arm\startup_LPC17xx.s
 Comment: __main used once
 __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 262 in file scotlandyARM\CMSIS\startup\arm\startup_LPC17xx.s
+      At line 262 in file CMSIS\startup\arm\startup_LPC17xx.s
    Uses
       None
 Comment: __use_two_region_memory unused

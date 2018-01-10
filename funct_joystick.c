@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
+#include "lpc17xx.h"
 
 uint8_t joystickRead() {
 

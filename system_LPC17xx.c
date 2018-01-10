@@ -499,12 +499,12 @@ void SystemInit (void)
   LPC_SC->PLL0CON   = 0x01;             /* PLL0 Enable                        */
   LPC_SC->PLL0FEED  = 0xAA;
   LPC_SC->PLL0FEED  = 0x55;
-  while (!(LPC_SC->PLL0STAT & (1<<26)));/* Wait for PLOCK0                    */
+  //while (!(LPC_SC->PLL0STAT & (1<<26)));/* Wait for PLOCK0                    */
 
   LPC_SC->PLL0CON   = 0x03;             /* PLL0 Enable & Connect              */
   LPC_SC->PLL0FEED  = 0xAA;
   LPC_SC->PLL0FEED  = 0x55;
-  while (!(LPC_SC->PLL0STAT & ((1<<25) | (1<<24))));/* Wait for PLLC0_STAT & PLLE0_STAT */
+ // while (!(LPC_SC->PLL0STAT & ((1<<25) | (1<<24))));/* Wait for PLLC0_STAT & PLLE0_STAT */
 #endif
 
 #if (PLL1_SETUP)
@@ -515,12 +515,12 @@ void SystemInit (void)
   LPC_SC->PLL1CON   = 0x01;             /* PLL1 Enable                        */
   LPC_SC->PLL1FEED  = 0xAA;
   LPC_SC->PLL1FEED  = 0x55;
-  while (!(LPC_SC->PLL1STAT & (1<<10)));/* Wait for PLOCK1                    */
+  //while (!(LPC_SC->PLL1STAT & (1<<10)));/* Wait for PLOCK1                    */
 
   LPC_SC->PLL1CON   = 0x03;             /* PLL1 Enable & Connect              */
   LPC_SC->PLL1FEED  = 0xAA;
   LPC_SC->PLL1FEED  = 0x55;
-  while (!(LPC_SC->PLL1STAT & ((1<< 9) | (1<< 8))));/* Wait for PLLC1_STAT & PLLE1_STAT */
+  //while (!(LPC_SC->PLL1STAT & ((1<< 9) | (1<< 8))));/* Wait for PLLC1_STAT & PLLE1_STAT */
 #else
   LPC_SC->USBCLKCFG = USBCLKCFG_Val;    /* Setup USB Clock Divider            */
 #endif

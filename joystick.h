@@ -7,5 +7,5 @@
 #include <stdint.h>
 
 // Get value
-uint8_t joystickRead();
+uint8_t joystickRead(void);
 void joystickInit();
