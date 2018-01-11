@@ -5,6 +5,7 @@
 #include "lpc17xx.h"
 #include "timer.h"
 
+
 uint8_t joystickRead() {
 
 		uint8_t old_value = 0x80;

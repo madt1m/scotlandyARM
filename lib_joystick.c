@@ -11,5 +11,4 @@ void joystickInit() {
 * Fast Port Pin Value Register --> The current state of the pins can be read from the register Writing in this register will set those pins.
 */
   LPC_GPIO1->FIODIR &= 0xC1FFFFFF; // sets to 0 (INPUT) direction of joystick
-	
 }
