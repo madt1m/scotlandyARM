@@ -1,4 +1,5 @@
 
+
 #include "lpc17xx.h"
 
 
@@ -12,3 +13,4 @@ void joystickInit() {
 */
   LPC_GPIO1->FIODIR = 0x00000000;  // li metto in input (0 input, 1 output)    
 }
+
