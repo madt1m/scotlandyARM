@@ -10,6 +10,6 @@ void joystickInit() {
 * Fast GPIO Port Direction Control Register --> Set pin direction (Input/Output)
 * Fast Port Pin Value Register --> The current state of the pins can be read from the register Writing in this register will set those pins.
 */
-  LPC_GPIO1->FIODIR &= ~(0x3E000000); // sets to 0 (INPUT) direction of joystick
+  LPC_GPIO1->FIODIR &= 0xC1FFFFFF; // sets to 0 (INPUT) direction of joystick
 	
 }
