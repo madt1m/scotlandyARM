@@ -8,4 +8,4 @@
 
 // Get value
 uint8_t joystickRead(void);
-void joystickInit();
+void joystickInit(void);

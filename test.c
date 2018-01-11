@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "joystick.h"
-
+#include "system_LPC17xx.h"
 #include "timer.h"
 
 
@@ -18,6 +18,7 @@ int main(){
 	uint8_t val;
 	uint8_t password[10];
 	int i = 0;
+	SystemInit(); 
 	joystickInit();
 	enable_timer(0);
 	while(1) {

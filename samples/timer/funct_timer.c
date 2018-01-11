@@ -30,19 +30,19 @@ void delayMs(uint8_t timer_num, uint32_t delayInMs)
   {
 	LPC_TIM0->TCR = 0x02;		/* reset timer */
 	LPC_TIM0->PR  = 0x00;		/* set prescaler to zero */
-	LPC_TIM0->MR0 = delayInMs * (9000000 / 1000-1);
+	LPC_TIM0->MR0 = delayInMs * (60000);
 	LPC_TIM0->IR  = 0xff;		/* reset all interrrupts */
 	LPC_TIM0->MCR = 0x04;		/* stop timer on match */
 	LPC_TIM0->TCR = 0x01;		/* start timer */
   
 	/* wait until delay time has elapsed */
-	while (LPC_TIM0->TCR & 0x01);
+ 	while (LPC_TIM0->TCR & 0x01);
   }
   else if ( timer_num == 1 )
   {
 	LPC_TIM1->TCR = 0x02;		/* reset timer */
 	LPC_TIM1->PR  = 0x00;		/* set prescaler to zero */
-	LPC_TIM1->MR0 = delayInMs * (9000000 / 1000-1);
+	LPC_TIM1->MR0 = delayInMs * (60000);
 	LPC_TIM1->IR  = 0xff;		/* reset all interrrupts */
 	LPC_TIM1->MCR = 0x04;		/* stop timer on match */
 	LPC_TIM1->TCR = 0x01;		/* start timer */

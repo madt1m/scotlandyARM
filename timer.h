@@ -9,6 +9,7 @@
 *********************************************************************************************************/
 #ifndef __TIMER_H
 #define __TIMER_H
+#include <stdint.h>
 
 /* da capire quanto vale in millisecondi ms */
 #define TIME_INTERVAL	(9000000/100 - 1)
