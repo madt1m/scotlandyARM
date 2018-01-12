@@ -11,11 +11,12 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>LPC1758</Device>
           <Vendor>NXP</Vendor>
-          <PackID>Keil.LPC1700_DFP.2.3.0-dev23</PackID>
+          <PackID>Keil.LPC1700_DFP.2.4.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IROM(0x00000000,0x80000) IRAM(0x10000000,0x8000) IRAM2(0x2007C000,0x8000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -423,11 +424,12 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>LPC1768</Device>
           <Vendor>NXP</Vendor>
-          <PackID>Keil.LPC1700_DFP.2.3.0-dev23</PackID>
+          <PackID>Keil.LPC1700_DFP.2.4.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IROM(0x00000000,0x80000) IRAM(0x10000000,0x8000) IRAM2(0x2007C000,0x8000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -1024,8 +1026,8 @@
     <files>
       <file attr="config" category="source" name="CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c" version="4.70.1">
         <instance index="0">RTE\CMSIS\RTX_Conf_CM.c</instance>
-        <component Capiversion="1.0" Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cvendor="ARM" Cversion="4.81.0" condition="RTOS RTX"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.0.1-dev3"/>
+        <component Capiversion="1.0.0" Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cvendor="ARM" Cversion="4.81.1" condition="RTOS RTX" isDefaultVariant="1"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.2.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1034,7 +1036,7 @@
       <file attr="config" category="header" condition="LPC1700 CMSIS Device" name="RTE_Driver\Config\RTE_Device.h" version="2.4.1">
         <instance index="0">RTE\Device\LPC1758\RTE_Device.h</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="LPC17xx CMSIS Device ARMCC"/>
-        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0-dev23"/>
+        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
         </targetInfos>
@@ -1042,7 +1044,7 @@
       <file attr="config" category="source" condition="LPC175x" name="Device\Source\ARM\startup_LPC17xx.s" version="1.0.0">
         <instance index="0">RTE\Device\LPC1758\startup_LPC17xx.s</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="LPC17xx CMSIS Device ARMCC"/>
-        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0-dev23"/>
+        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
         </targetInfos>
@@ -1050,7 +1052,7 @@
       <file attr="config" category="source" condition="LPC175x" name="Device\Source\system_LPC17xx.c" version="1.0.0">
         <instance index="0">RTE\Device\LPC1758\system_LPC17xx.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="LPC17xx CMSIS Device ARMCC"/>
-        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0-dev23"/>
+        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
         </targetInfos>
@@ -1058,7 +1060,7 @@
       <file attr="config" category="header" condition="LPC1700 CMSIS Device" name="RTE_Driver\Config\RTE_Device.h" version="2.4.1">
         <instance index="0">RTE\Device\LPC1768\RTE_Device.h</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="LPC17xx CMSIS Device ARMCC"/>
-        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0-dev23"/>
+        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="LPC1768 Flash"/>
         </targetInfos>
@@ -1066,7 +1068,7 @@
       <file attr="config" category="source" condition="LPC176x" name="Device\Source\ARM\startup_LPC17xx.s" version="1.0.0">
         <instance index="0">RTE\Device\LPC1768\startup_LPC17xx.s</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="LPC17xx CMSIS Device ARMCC"/>
-        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0-dev23"/>
+        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="LPC1768 Flash"/>
         </targetInfos>
@@ -1074,15 +1076,15 @@
       <file attr="config" category="source" condition="LPC176x" name="Device\Source\system_LPC17xx.c" version="1.0.0">
         <instance index="0">RTE\Device\LPC1768\system_LPC17xx.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="LPC17xx CMSIS Device ARMCC"/>
-        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0-dev23"/>
+        <package name="LPC1700_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
         <targetInfos>
           <targetInfo name="LPC1768 Flash"/>
         </targetInfos>
       </file>
       <file attr="config" category="source" name="Network_v6\Config\Net_Config.c" version="5.0.0">
         <instance index="0">RTE\Network\Net_Config.c</instance>
-        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="CORE" Cvariant="Release" Cvendor="Keil" Cversion="6.7.0" condition="CMSIS Core with RTOS"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.3.0"/>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="CORE" Cvariant="Release" Cvendor="Keil" Cversion="6.7.5" condition="CMSIS Core with RTOS"/>
+        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.4.1"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1090,8 +1092,8 @@
       </file>
       <file attr="config" category="source" name="Network_v6\Config\Net_Config_ETH.h" version="5.01">
         <instance index="0">RTE\Network\Net_Config_ETH_0.h</instance>
-        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Interface" Csub="ETH" Cvendor="Keil" Cversion="6.7.0" condition="Network Driver ETH" maxInstances="1"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.3.0"/>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Interface" Csub="ETH" Cvendor="Keil" Cversion="6.7.5" condition="Network Driver ETH" maxInstances="1"/>
+        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.4.1"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1099,8 +1101,8 @@
       </file>
       <file attr="config" category="source" name="Network_v6\Config\Net_Config_TCP.h" version="5.0.1">
         <instance index="0">RTE\Network\Net_Config_TCP.h</instance>
-        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Socket" Csub="TCP" Cvendor="Keil" Cversion="6.7.0" condition="Network Interface"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.3.0"/>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Socket" Csub="TCP" Cvendor="Keil" Cversion="6.7.5" condition="Network Interface"/>
+        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.4.1"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1108,8 +1110,8 @@
       </file>
       <file attr="config" category="source" name="Network_v6\Config\Net_Config_Telnet_Server.h" version="5.0.0">
         <instance index="0">RTE\Network\Net_Config_Telnet_Server.h</instance>
-        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="Telnet Server" Cvendor="Keil" Cversion="6.7.0" condition="Network TCP"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.3.0"/>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Service" Csub="Telnet Server" Cvendor="Keil" Cversion="6.7.5" condition="Network TCP"/>
+        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.4.1"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>
@@ -1117,8 +1119,8 @@
       </file>
       <file attr="config" category="source" name="Network_v6\Config\Net_Config_UDP.h" version="5.0.0">
         <instance index="0">RTE\Network\Net_Config_UDP.h</instance>
-        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Socket" Csub="UDP" Cvendor="Keil" Cversion="6.7.0" condition="Network Interface"/>
-        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.3.0"/>
+        <component Cbundle="MDK-Pro Net_v6" Cclass="Network" Cgroup="Socket" Csub="UDP" Cvendor="Keil" Cversion="6.7.5" condition="Network Interface"/>
+        <package name="MDK-Middleware" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="Keil" version="7.4.1"/>
         <targetInfos>
           <targetInfo name="LPC1758 Flash"/>
           <targetInfo name="LPC1768 Flash"/>

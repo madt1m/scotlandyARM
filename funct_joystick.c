@@ -1,3 +1,9 @@
+/**
+* filename: funct_joystick.c
+* last_modified: 12/01/2018
+* <-------->
+* Contains high level functions controlling Joystick peripheral
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -6,11 +12,10 @@
 #include "timer.h"
 
 
-uint8_t joystickRead() {
+uint8_t joystick_get_input() {
 
 		uint8_t old_value = 0x80;
 		uint8_t value = old_value;
-		uint8_t toreturn;
 		
 		while(1) {
 			value = (LPC_GPIO1->FIOPIN >> 25) & 0x1F;

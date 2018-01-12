@@ -18,10 +18,10 @@ int main(){
 	uint8_t val;
 	uint8_t password[10];
 	int i = 0;
-	joystickInit();
+	joystick_init();
 	enable_timer(0);
 	while(1) {
-		val = joystickRead();
+		val = joystick_get_input();
 		delayMs(0, 5000);
 		password[i] = val;
 		i++;
