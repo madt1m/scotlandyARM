@@ -22,7 +22,7 @@ int main(){
 	joystickInit();
 	enable_timer(0);
 	while(1) {
-		val = joystickRead();
+		val = joystick_get_input();
 		delayMs(0, 5000);
 		password[i] = val;
 		i++;

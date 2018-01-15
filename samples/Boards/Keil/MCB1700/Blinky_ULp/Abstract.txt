@@ -1,0 +1,43 @@
+The 'Blinky' project is a simple program for the LPC1768
+microcontroller using Keil 'MCB1700' Evaluation Board, compliant
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+It demonstrates the use of ULINKpro Debugger.
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL    =           12.00 MHz
+   - CPU     =          100.00 MHz
+
+ - Sys Timer is used in interrupt mode
+ - 8 LEDs blink with speed depending on potentiometer position
+ - AD settings: 12 bit resolution
+ - AD value is output onto ITM debug port #0
+
+
+The Blinky program is available in different targets:
+
+  SWO Trace:              configured for on-chip Flash
+                          shows use of LogicAnalyzer, ITM output, Exception Trace
+                          use connector "Cortex Debug + ETM" or "Cortex Debug" or "JTAG"
+
+  TracePort Trace:        configured for on-chip Flash
+                          shows use of LogicAnalyzer, ITM output, Exception Trace
+                          use connector "Cortex Debug + ETM"
+
+  Instruction Trace:      configured for on-chip Flash
+                          shows use of Instruction Trace
+                          use connector "Cortex Debug + ETM"
+
+
+ULINKpro notes
+--------------
+LPC17xx_TP.ini enables TPIU Interfcace. 
+                 TPIU signals are available on the pins hosting them. 
+Trace pins:  TRACECLK        P2.6
+             TRACEDATA0..3   P2.5..P2.2    (4 bit trace data)
+             do not use these pins in your application!
+
+Instruction trace is very time and resource consuming
+therefore if you want to use instruction trace use
+nothing else (no LA, no exceptions, no ITM, no ...).
