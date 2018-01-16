@@ -11,15 +11,17 @@
 #include "joystick.h"
 #include "system_LPC17xx.h"
 #include "timer.h"
+#include "lpc17xx.h"
 
+#define extern
 
-#include "easyweb.h"
 #include "type.h"
 #include "EMAC.h"         // Keil: *.c -> *.h    // ethernet packet driver
 #include "tcpip.h"        // Keil: *.c -> *.h    // easyWEB TCP/IP stack
 
 unsigned int pagecounter = 100;
 unsigned int adcValue    =   0;
+extern uint32_t SystemFrequency;
 
 extern void TCPClockHandler(void);
 
@@ -70,7 +72,7 @@ int main(){
    *(unsigned char *)RemoteIP = 192;               // inserisco l'ip del nostro server remoto
   *((unsigned char *)RemoteIP + 1) = 168;          
   *((unsigned char *)RemoteIP + 2) = 1;        
-  *((unsigned char *)RemoteIP + 3) = 4;
+  *((unsigned char *)RemoteIP + 3) = 7;
 
   TCPActiveOpen();
 
