@@ -87,7 +87,7 @@ int main(void)
 */
 
   HTTPStatus = 0;                                // clear HTTP-server's flag register
-
+ 
   TCPLocalPort = TCP_PORT_HTTP;                  // set port we want to listen to
   
   while (1)                                      // repeat forever

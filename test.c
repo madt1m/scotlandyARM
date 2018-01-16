@@ -54,6 +54,8 @@ int main(){
 		i++;
 	}
 */
+
+  char prova[] = "prova";
   SystemInit();                                      /* setup core clocks */
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
 
@@ -78,7 +80,27 @@ int main(){
 
   while(1){
   	DoNetworkStuff();
+    Channel();
   }
+}
+
+
+void Channel() {
+  if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
+  {
+    if (SocketStatus & SOCK_DATA_AVAILABLE) {     // check if remote TCP sent data
+      TCPReleaseRxBuffer(); 
+    }
+      if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
+      {
+        memcpy(TCP_TX_BUF, prova, sizeof(prova)-1);
+        TCPTransmitTxBuffer(); 
+      }
+    }
+  }
+}
+
+
 
 
 

@@ -187,7 +187,7 @@ void DoNetworkStuff(void)
   switch (TCPStateMachine)
   {
     case CLOSED :
-    case LISTENING :
+    case LISTENING :                             // case when i'm waiting for a connection, useful if server 
     {
       if (TCPFlags & TCP_ACTIVE_OPEN)            // stack has to open a connection?
         if (TCPFlags & IP_ADDR_RESOLVED)         // IP resolved?
