@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 #include "joystick.h"
 #include "system_LPC17xx.h"
 #include "timer.h"
@@ -24,6 +25,7 @@ unsigned int adcValue    =   0;
 extern uint32_t SystemFrequency;
 
 extern void TCPClockHandler(void);
+char prova[] = "prova";
 
 volatile DWORD TimeTick  = 0;
 
@@ -36,6 +38,19 @@ void SysTick_Handler (void) {
   }  
 }
 
+void Channel(void) {
+  if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
+  {
+    if (SocketStatus & SOCK_DATA_AVAILABLE) {     // check if remote TCP sent data
+      TCPReleaseRxBuffer(); 
+    }
+      if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
+      {
+        memcpy(TCP_TX_BUF, prova, sizeof(prova)-1);
+        TCPTransmitTxBuffer(); 
+      }
+  }
+}
 
 int main(){
 
@@ -55,7 +70,6 @@ int main(){
 	}
 */
 
-  char prova[] = "prova";
   SystemInit();                                      /* setup core clocks */
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
 
@@ -75,7 +89,8 @@ int main(){
   *((unsigned char *)RemoteIP + 1) = 168;          
   *((unsigned char *)RemoteIP + 2) = 1;        
   *((unsigned char *)RemoteIP + 3) = 7;
-
+	TCPLocalPort = 12345;
+	TCPRemotePort = 12007;
   TCPActiveOpen();
 
   while(1){
@@ -101,3 +116,4 @@ void Channel() {
 }
 
 }
+
