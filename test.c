@@ -38,40 +38,31 @@ void SysTick_Handler (void) {
   }  
 }
 
-void Channel(void) {
-  if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
-  {
-    if (SocketStatus & SOCK_DATA_AVAILABLE) {     // check if remote TCP sent data
-      TCPReleaseRxBuffer(); 
-    }
-      if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
-      {
-        memcpy(TCP_TX_BUF, prova, sizeof(prova)-1);
-        TCPTransmitTxBuffer(); 
-      }
-  }
-}
+void Channel(void);
 
 int main(){
 
  
-/*
+
 	uint8_t val;
-	uint8_t password[10];
+  uint8_t test_array[8];
+	char password[8];
 	int i = 0; 
-	joystickInit();
-	enable_timer(0);
-	SystemInit();
-	while(1) {
-		val = joystick_get_input();
-		delayMs(0, 5000);
-		password[i] = val;
-		i++;
-	}
-*/
+  uint8_t PASSWORD_SENT = 0x0;
 
   SystemInit();                                      /* setup core clocks */
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
+
+	joystickInit();
+	enable_timer(0);
+
+	while(1) {
+		val = joystick_get_input();
+		delayMs(0, 5000);
+		//test_array[i] = val;
+    password[i] = convertInputToChar(val);
+		i++;
+	}
 
   LPC_GPIO0->FIODIR   |= 1 << 21;					// ÉèÖÃLEDÓÐÐ§
   LPC_GPIO0->FIOPIN	  |= 1 << 21;
@@ -103,13 +94,17 @@ int main(){
 void Channel() {
   if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
   {
-    if (SocketStatus & SOCK_DATA_AVAILABLE) {     // check if remote TCP sent data
+    if (SocketStatus & SOCK_DATA_AVAILABLE && !PASSWORD_SENT) {     // check if remote TCP sent data
       TCPReleaseRxBuffer(); 
+    }
+    else{
+
     }
       if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
       {
-        memcpy(TCP_TX_BUF, prova, sizeof(prova)-1);
-        TCPTransmitTxBuffer(); 
+        memcpy(TCP_TX_BUF, password, sizeof(password)-1);
+        TCPTransmitTxBuffer();
+        PASSWORD_SENT = 0x1; 
       }
     }
   }
