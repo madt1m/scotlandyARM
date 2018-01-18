@@ -10,7 +10,7 @@
 /******************************************************************************/
 
 
-#include <lpc17xx.h>
+#include "lpc17xx.h"
 #include "GLCD.h"
 #include "Font_24x16.h"
 
@@ -71,7 +71,7 @@
 
 /******************************************************************************/
 static volatile unsigned short TextColor = Black, BackColor = White;
-
+static unsigned short driverCode;
 
 /************************ Local auxiliary functions ***************************/
 
@@ -128,10 +128,10 @@ static __inline unsigned short lcd_read (void) {
   LPC_GPIO2->FIODIR &= 0xffffff00;                //P2.0...P2.7 Input
   LCD_DIR(0)		   				              //Interface B->A
   LCD_EN(0)	                                      //Enable 2B->2A
-  wait_delay(50);							      //delay some times
+  wait_delay(80);							      //delay some times
   id = LPC_GPIO2->FIOPIN & 0x00ff;                //Read D8..D15                         
   LCD_EN(1)	                                      //Enable 1B->1A
-  wait_delay(50);							      //delay some times
+  wait_delay(80);							      //delay some times
   id = (id << 8) | (LPC_GPIO2->FIOPIN & 0x00ff);  //Read D0..D7                         
   LCD_DIR(1)						
   return(id); 
@@ -267,7 +267,6 @@ static unsigned short rd_reg (unsigned short reg) {
 *******************************************************************************/
 
 void GLCD_Init (void) { 
-  static unsigned short driverCode;
 
   /* Configure the LCD Control pins                                           */
   LPC_GPIO0->FIODIR   |= 0x03f80000;
@@ -319,6 +318,76 @@ void GLCD_Init (void) {
   	wr_reg(0xA0,0x0000);
   	delay(20);
   }
+  else if(driverCode == 0x9325)		 //2.8" TFT LCD Module,DriverIC is ILI9325
+  {
+  	    wr_reg(0x00e7,0x0010);      
+        wr_reg(0x0000,0x0001);  			//start internal osc
+        wr_reg(0x0001,0x0100);     
+        wr_reg(0x0002,0x0700); 				//power on sequence                     
+        wr_reg(0x0003,(1<<12)|(1<<5)|(1<<4) ); 	//65K 
+        wr_reg(0x0004,0x0000);                                   
+        wr_reg(0x0008,0x0207);	           
+        wr_reg(0x0009,0x0000);         
+        wr_reg(0x000a,0x0000); 				//display setting         
+        wr_reg(0x000c,0x0001);				//display setting          
+        wr_reg(0x000d,0x0000); 				//0f3c          
+        wr_reg(0x000f,0x0000);
+//Power On sequence //
+        wr_reg(0x0010,0x0000);   
+        wr_reg(0x0011,0x0007);
+        wr_reg(0x0012,0x0000);                                                                 
+        wr_reg(0x0013,0x0000);                 
+        delay(15);
+        wr_reg(0x0010,0x1590);   
+        wr_reg(0x0011,0x0227);
+        delay(15);
+        wr_reg(0x0012,0x009c);                  
+        delay(15);
+        wr_reg(0x0013,0x1900);   
+        wr_reg(0x0029,0x0023);
+        wr_reg(0x002b,0x000e);
+        delay(15);
+        wr_reg(0x0020,0x0000);                                                            
+        wr_reg(0x0021,0x0000);           
+///////////////////////////////////////////////////////      
+        delay(15);
+        wr_reg(0x0030,0x0007); 
+        wr_reg(0x0031,0x0707);   
+        wr_reg(0x0032,0x0006);
+        wr_reg(0x0035,0x0704);
+        wr_reg(0x0036,0x1f04); 
+        wr_reg(0x0037,0x0004);
+        wr_reg(0x0038,0x0000);        
+        wr_reg(0x0039,0x0706);     
+        wr_reg(0x003c,0x0701);
+        wr_reg(0x003d,0x000f);
+        delay(15);
+        wr_reg(0x0050,0x0000);        
+        wr_reg(0x0051,0x00ef);   
+        wr_reg(0x0052,0x0000);     
+        wr_reg(0x0053,0x013f);
+        wr_reg(0x0060,0xa700);        
+        wr_reg(0x0061,0x0001); 
+        wr_reg(0x006a,0x0000);
+        wr_reg(0x0080,0x0000);
+        wr_reg(0x0081,0x0000);
+        wr_reg(0x0082,0x0000);
+        wr_reg(0x0083,0x0000);
+        wr_reg(0x0084,0x0000);
+        wr_reg(0x0085,0x0000);
+      
+        wr_reg(0x0090,0x0010);     
+        wr_reg(0x0092,0x0000);  
+        wr_reg(0x0093,0x0003);
+        wr_reg(0x0095,0x0110);
+        wr_reg(0x0097,0x0000);        
+        wr_reg(0x0098,0x0000);  
+         //display on sequence     
+        wr_reg(0x0007,0x0133);
+    
+        wr_reg(0x0020,0x0000);                                                            
+        wr_reg(0x0021,0x0000);
+   }
   else if(driverCode == 0x9320)		 //3.2" TFT LCD Module,DriverIC is ILI9320
   {
     /* Start Initial Sequence --------------------------------------------------*/
@@ -389,12 +458,57 @@ void GLCD_Init (void) {
 	wr_reg(0x97, 0x0000);
 	wr_reg(0x98, 0x0000);
   }
+  
   /* Set GRAM write direction and BGR = 1
      I/D=10 (Horizontal : increment, Vertical : increment)
      AM=1 (address is updated in vertical writing direction)                  */
   wr_reg(0x03, 0x1038);
 
   wr_reg(0x07, 0x0173);                 /* 262K color and display ON          */ 
+  if(driverCode == 0x8989)		 //3.2" TFT LCD Module,DriverIC is SSD1289
+  {
+  	    wr_reg(0x0000,0x0001);    delay(5);  //打开晶振
+    	wr_reg(0x0003,0xA8A4);    delay(5);   //0xA8A4
+    	wr_reg(0x000C,0x0000);    delay(5);   
+    	wr_reg(0x000D,0x080C);    delay(5);   
+    	wr_reg(0x000E,0x2B00);    delay(5);   
+    	wr_reg(0x001E,0x00B0);    delay(5);   
+    	wr_reg(0x0001,0x2b3F);    delay(5);        //驱动输出控制320*240  0x6B3F  293f	2b3f 6b3f
+    	wr_reg(0x0002,0x0600);    delay(5);
+    	wr_reg(0x0010,0x0000);    delay(5);
+    	wr_reg(0x0011,0x6078);    delay(5);        //0x4030           //定义数据格式  16位色  横屏 0x6058	   6078
+    	wr_reg(0x0005,0x0000);    delay(5);
+    	wr_reg(0x0006,0x0000);    delay(5);
+    	wr_reg(0x0016,0xEF1C);    delay(5);
+    	wr_reg(0x0017,0x0003);    delay(5);
+    	wr_reg(0x0007,0x0233);    delay(5);        //0x0233       
+    	wr_reg(0x000B,0x0000);    delay(5);
+    	wr_reg(0x000F,0x0000);    delay(5);        //扫描开始地址
+    	wr_reg(0x0041,0x0000);    delay(5);
+    	wr_reg(0x0042,0x0000);    delay(5);
+    	wr_reg(0x0048,0x0000);    delay(5);
+    	wr_reg(0x0049,0x013F);    delay(5);
+    	wr_reg(0x004A,0x0000);    delay(5);
+    	wr_reg(0x004B,0x0000);    delay(5);
+    	wr_reg(0x0044,0xEF00);    delay(5);
+    	wr_reg(0x0045,0x0000);    delay(5);
+    	wr_reg(0x0046,0x013F);    delay(5);
+    	wr_reg(0x0030,0x0707);    delay(5);
+    	wr_reg(0x0031,0x0204);    delay(5);
+    	wr_reg(0x0032,0x0204);    delay(5);
+    	wr_reg(0x0033,0x0502);    delay(5);
+    	wr_reg(0x0034,0x0507);    delay(5);
+    	wr_reg(0x0035,0x0204);    delay(5);
+    	wr_reg(0x0036,0x0204);    delay(5);
+    	wr_reg(0x0037,0x0502);    delay(5);
+    	wr_reg(0x003A,0x0302);    delay(5);
+    	wr_reg(0x003B,0x0302);    delay(5);
+    	wr_reg(0x0023,0x0000);    delay(5);
+    	wr_reg(0x0024,0x0000);    delay(5);
+    	wr_reg(0x0025,0x8000);    delay(5);
+    	wr_reg(0x004f,0);        //行首址0
+    	wr_reg(0x004e,0);        //列首址0
+  }
 }
 
 
@@ -405,11 +519,21 @@ void GLCD_Init (void) {
 *******************************************************************************/
 
 void GLCD_WindowMax (void) {
-
-  wr_reg(0x50, 0);                      /* Horizontal GRAM Start Address      */
-  wr_reg(0x51, HEIGHT-1);               /* Horizontal GRAM End   Address (-1) */
-  wr_reg(0x52, 0);                      /* Vertical   GRAM Start Address      */
-  wr_reg(0x53, WIDTH-1);                /* Vertical   GRAM End   Address (-1) */
+  
+  if(driverCode==0x8989)
+  {
+	wr_reg(0x44, 0);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x44, 0 |((HEIGHT-1)<<8));     /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x45, 0);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x46, WIDTH-1);                /* Vertical   GRAM End   Address (-1) */
+  }
+  else
+  {
+  	wr_reg(0x50, 0);                      /* Horizontal GRAM Start Address      */
+  	wr_reg(0x51, HEIGHT-1);               /* Horizontal GRAM End   Address (-1) */
+  	wr_reg(0x52, 0);                      /* Vertical   GRAM Start Address      */
+  	wr_reg(0x53, WIDTH-1);                /* Vertical   GRAM End   Address (-1) */
+  }
 }
 
 
@@ -421,9 +545,16 @@ void GLCD_WindowMax (void) {
 *******************************************************************************/
 
 void GLCD_PutPixel (unsigned int x, unsigned int y) {
-
-  wr_reg(0x20, y);
-  wr_reg(0x21, WIDTH-1-x);
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x4e, y);
+  	wr_reg(0x4f, WIDTH-1-x);
+  }
+  else
+  {
+  	wr_reg(0x20, y);
+  	wr_reg(0x21, WIDTH-1-x);
+  }
   LCD_CS(0)
   wr_cmd(0x22);
   wr_dat(TextColor);
@@ -466,8 +597,16 @@ void GLCD_Clear (unsigned short color) {
 
   GLCD_WindowMax();
 
-  wr_reg(0x20, 0);
-  wr_reg(0x21, 0);
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x4e, 0);
+  	wr_reg(0x4f, 0);
+  }
+  else
+  {
+  	wr_reg(0x20, 0);
+  	wr_reg(0x21, 0);
+  }
   LCD_CS(0)
   wr_cmd(0x22);
   wr_dat_start();
@@ -489,13 +628,27 @@ void GLCD_DrawChar (unsigned int x, unsigned int y, unsigned short *c) {
   int idx = 0, i, j;
 
   x = WIDTH-x-CHAR_W;
-  wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
-  wr_reg(0x51, y+CHAR_H-1);             /* Horizontal GRAM End   Address (-1) */
-  wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
-  wr_reg(0x53, x+CHAR_W-1);             /* Vertical   GRAM End   Address (-1) */
 
-  wr_reg(0x20, y);
-  wr_reg(0x21, x);
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x44, y);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x44, y |((y+CHAR_H-1)<<8));   /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x45, x);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x46, x+CHAR_W-1);             /* Vertical   GRAM End   Address (-1) */
+
+	wr_reg(0x4e, y);
+  	wr_reg(0x4f, x);
+  }
+  else
+  {
+  	wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
+  	wr_reg(0x51, y+CHAR_H-1);             /* Horizontal GRAM End   Address (-1) */
+  	wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
+  	wr_reg(0x53, x+CHAR_W-1);             /* Vertical   GRAM End   Address (-1) */
+
+	wr_reg(0x20, y);
+  	wr_reg(0x21, x);
+  }
   LCD_CS(0)
   wr_cmd(0x22);
   wr_dat_start();
@@ -570,14 +723,32 @@ void GLCD_Bargraph (unsigned int x, unsigned int y, unsigned int w, unsigned int
   int i,j;
 
   x = WIDTH-x-w;
-  wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
-  wr_reg(0x51, y+CHAR_H-1);             /* Horizontal GRAM End   Address (-1) */
-  wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
-  wr_reg(0x53, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x44, y);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x44, y |((y+CHAR_H-1)<<8));   /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x45, x);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x46, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  }
+  else
+  {
+  	wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
+  	wr_reg(0x51, y+CHAR_H-1);             /* Horizontal GRAM End   Address (-1) */
+  	wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
+  	wr_reg(0x53, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  }
 
   val = (val * w) >> 10;                /* Scale value for 24x12 characters   */
-  wr_reg(0x20, y);
-  wr_reg(0x21, x);
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x4e, y);
+  	wr_reg(0x4f, x);
+  }
+  else
+  {
+  	wr_reg(0x20, y);
+  	wr_reg(0x21, x);
+  }
   LCD_CS(0)
   wr_cmd(0x22);
   wr_dat_start();
@@ -611,13 +782,24 @@ void GLCD_Bitmap (unsigned int x, unsigned int y, unsigned int w, unsigned int h
   unsigned short *bitmap_ptr = (unsigned short *)bitmap;
 
   x = WIDTH-x-w;
-  wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
-  wr_reg(0x51, y+h-1);                  /* Horizontal GRAM End   Address (-1) */
-  wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
-  wr_reg(0x53, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
-
-  wr_reg(0x20, y);
-  wr_reg(0x21, x);
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x44, y);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x44, y |((y+h-1)<<8));        /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x45, x);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x46, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  	wr_reg(0x4e, y);
+  	wr_reg(0x4f, x);
+  }
+  else
+  {
+  	wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x51, y+h-1);                  /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x53, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  	wr_reg(0x20, y);
+  	wr_reg(0x21, x);
+  }
   LCD_CS(0)
   wr_cmd(0x22);
   wr_dat_start();
@@ -649,13 +831,25 @@ void GLCD_Bmp (unsigned int x, unsigned int y, unsigned int w, unsigned int h, u
   unsigned short *bitmap_ptr = (unsigned short *)bmp;
 
   x = WIDTH-x-w;
-  wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
-  wr_reg(0x51, y+h-1);                  /* Horizontal GRAM End   Address (-1) */
-  wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
-  wr_reg(0x53, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
 
-  wr_reg(0x20, y);
-  wr_reg(0x21, x);
+  if(driverCode==0x8989)
+  {
+  	wr_reg(0x44, y);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x44, y |((y+h-1)<<8));        /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x45, x);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x46, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  	wr_reg(0x4e, y);
+  	wr_reg(0x4f, x);
+  }
+  else
+  {
+  	wr_reg(0x50, y);                      /* Horizontal GRAM Start Address      */
+    wr_reg(0x51, y+h-1);                  /* Horizontal GRAM End   Address (-1) */
+    wr_reg(0x52, x);                      /* Vertical   GRAM Start Address      */
+    wr_reg(0x53, x+w-1);                  /* Vertical   GRAM End   Address (-1) */
+  	wr_reg(0x20, y);
+  	wr_reg(0x21, x);
+  }
   LCD_CS(0)
   wr_cmd(0x22);
   wr_dat_start();

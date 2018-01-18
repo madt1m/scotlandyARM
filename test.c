@@ -13,6 +13,7 @@
 #include "utilities.h"
 #include "system_LPC17xx.h"
 #include "lpc17xx.h"
+#include "GLCD.h"
 
 #define extern
 
@@ -28,7 +29,7 @@ extern void TCPClockHandler(void);
 char prova[] = "prova";
 uint8_t PASSWORD_SENT = 0x0;
 char password[8];
-
+unsigned char* stringa = "NO WEAPONS PROVIDED";
 
 volatile DWORD TimeTick  = 0;
 
@@ -51,7 +52,12 @@ int main(){
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
 
 	joystick_init();
-
+	GLCD_Init();
+	GLCD_Clear(Black);
+	GLCD_SetBackColor(Black);
+	GLCD_SetTextColor(Green);
+	GLCD_DisplayString(0, 0, stringa);
+	
 	while(i < 8) {
 		val = convertInputToChar(joystick_get_input());
 		if(val != 'q'){
