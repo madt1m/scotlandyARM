@@ -1,11 +1,11 @@
 import socket
 import sys
 
-HOST = "172.20.238.243"
+#HOST = "localhost"
 PORT = 12007
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-	s.bind((HOST, PORT))
+	s.bind(('', PORT))
 	print('Socket created')
 	s.listen(1)
 	print('Waiting for connections')
@@ -14,3 +14,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	print(addr)
 	data = conn.recv(1024)
 	print(data.decode())
+
