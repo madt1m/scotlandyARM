@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+#include "utilities.h"
 #include "lpc17xx.h"
 #include "timer.h"
 
@@ -20,7 +20,7 @@ uint8_t joystick_get_input() {
 		while(1) {
 			value = (LPC_GPIO1->FIOPIN >> 25) & 0x1F;
 			if(value != old_value && old_value != 0x80) {
-				delayMs(0, 5000);
+				delay(10);
 				return value;
 			}
 			if(old_value == 0x80){

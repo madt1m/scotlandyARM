@@ -10,8 +10,8 @@
 #include <stdint.h>
 #include <string.h>
 #include "joystick.h"
+#include "utilities.h"
 #include "system_LPC17xx.h"
-#include "timer.h"
 #include "lpc17xx.h"
 
 #define extern
@@ -26,6 +26,9 @@ extern uint32_t SystemFrequency;
 
 extern void TCPClockHandler(void);
 char prova[] = "prova";
+uint8_t PASSWORD_SENT = 0x0;
+uint8_t test_array[8];
+
 
 volatile DWORD TimeTick  = 0;
 
@@ -41,27 +44,21 @@ void SysTick_Handler (void) {
 void Channel(void);
 
 int main(){
-
- 
-
-	uint8_t val;
-  uint8_t test_array[8];
+	char val;
 	char password[8];
 	int i = 0; 
-  uint8_t PASSWORD_SENT = 0x0;
 
   SystemInit();                                      /* setup core clocks */
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
 
-	joystickInit();
-	enable_timer(0);
+	joystick_init();
 
-	while(1) {
-		val = joystick_get_input();
-		delayMs(0, 5000);
-		//test_array[i] = val;
-    password[i] = convertInputToChar(val);
-		i++;
+	while(i < 8) {
+		val = convertInputToChar(joystick_get_input());
+		if(val != 'q'){
+			password[i] = val;
+			i++;
+		}
 	}
 
   LPC_GPIO0->FIODIR   |= 1 << 21;					// ÉèÖÃLEDÓÐÐ§
@@ -102,13 +99,10 @@ void Channel() {
     }
       if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
       {
-        memcpy(TCP_TX_BUF, password, sizeof(password)-1);
+        memcpy(TCP_TX_BUF, test_array , sizeof(test_array)-1);
         TCPTransmitTxBuffer();
         PASSWORD_SENT = 0x1; 
       }
     }
-  }
-}
-
 }
 
