@@ -3,6 +3,7 @@ import sys
 
 #HOST = "localhost"
 PORT = 12007
+PASSWORD = "uurrddll"
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	s.bind(('', PORT))
@@ -12,6 +13,14 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	conn, addr = s.accept()
 	print('Connected by')
 	print(addr)
-	data = conn.recv(1024)
-	print(data.decode())
+	data = conn.recv(8)
+	#print(data.decode())
+	if data == PASSWORD:  
+		res = bytes.fromhex('FF')
+		conn.send(res)
+	else:
+	 	res = bytes.fromhex('00')
+	 	conn.send(res)
+	conn.close()
+
 
