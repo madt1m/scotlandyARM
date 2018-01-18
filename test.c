@@ -27,7 +27,7 @@ extern uint32_t SystemFrequency;
 extern void TCPClockHandler(void);
 char prova[] = "prova";
 uint8_t PASSWORD_SENT = 0x0;
-uint8_t test_array[8];
+char password[8];
 
 
 volatile DWORD TimeTick  = 0;
@@ -45,7 +45,6 @@ void Channel(void);
 
 int main(){
 	char val;
-	char password[8];
 	int i = 0; 
 
   SystemInit();                                      /* setup core clocks */
@@ -73,10 +72,10 @@ int main(){
                           (1<<21);                   /* enable ADC */ 
   TCPLowLevelInit();
 
-   *(unsigned char *)RemoteIP = 192;               // inserisco l'ip del nostro server remoto
-  *((unsigned char *)RemoteIP + 1) = 168;          
-  *((unsigned char *)RemoteIP + 2) = 1;        
-  *((unsigned char *)RemoteIP + 3) = 7;
+   *(unsigned char *)RemoteIP = 172;               // inserisco l'ip del nostro server remoto
+  *((unsigned char *)RemoteIP + 1) = 20;          
+  *((unsigned char *)RemoteIP + 2) = 238;        
+  *((unsigned char *)RemoteIP + 3) = 243;
 	TCPLocalPort = 12345;
 	TCPRemotePort = 12007;
   TCPActiveOpen();
@@ -99,7 +98,7 @@ void Channel() {
     }
       if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
       {
-        memcpy(TCP_TX_BUF, test_array , sizeof(test_array)-1);
+        memcpy(TCP_TX_BUF, password, sizeof(password)); // send the password on the wire
         TCPTransmitTxBuffer();
         PASSWORD_SENT = 0x1; 
       }

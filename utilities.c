@@ -19,7 +19,6 @@ char convertInputToChar(uint8_t val){
 		default:
 			return 'q';
 	}
-	return 64+val;
 }
 
 void delay(int c){

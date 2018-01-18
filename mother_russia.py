@@ -14,7 +14,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	print('Connected by')
 	print(addr)
 	data = conn.recv(8)
-	#print(data.decode())
+	print(data.decode())
 	if data == PASSWORD:  
 		res = bytes.fromhex('FF')
 		conn.send(res)
