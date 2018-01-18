@@ -1,7 +1,7 @@
 import socket
 import sys
 
-HOST = "127.0.0.1"
+HOST = "172.20.238.243"
 PORT = 12007
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -10,6 +10,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	s.listen(1)
 	print('Waiting for connections')
 	conn, addr = s.accept()
-	print('Connected by' + addr)
+	print('Connected by')
+	print(addr)
 	data = conn.recv(1024)
-	print(data)
+	print(data.decode())
