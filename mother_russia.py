@@ -3,9 +3,13 @@ import sys
 
 HOST = "127.0.0.1"
 PORT = 12007
-ETH_P_ALL = 3
-with socket.socket(socket.AF_PACKET, socket.SOCK_RAW) as s:
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	s.bind((HOST, PORT))
-	print('Waiting for messages')
-	data = s.recv(1024)
-	print('Data received: '+ data)
+	print('Socket created')
+	s.listen(1)
+	print('Waiting for connections')
+	conn, addr = s.accept()
+	print('Connected by' + addr)
+	data = conn.recv(1024)
+	print(data)
