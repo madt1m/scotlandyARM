@@ -186,7 +186,7 @@ void DoNetworkStuff(void)
 
   switch (TCPStateMachine)
   {
-    case CLOSED :
+    case CLOSED :																 // ARM_BROs: The code gets here with CLOSED or LISTENING state machine
     case LISTENING :                             // case when i'm waiting for a connection, useful if server 
     {
       if (TCPFlags & TCP_ACTIVE_OPEN)            // stack has to open a connection?

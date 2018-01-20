@@ -78,10 +78,10 @@ int main(){
                           (1<<21);                   /* enable ADC */ 
   TCPLowLevelInit();
 
-   *(unsigned char *)RemoteIP = 172;               // inserisco l'ip del nostro server remoto
-  *((unsigned char *)RemoteIP + 1) = 20;          
-  *((unsigned char *)RemoteIP + 2) = 238;        
-  *((unsigned char *)RemoteIP + 3) = 243;
+   *(unsigned char *)RemoteIP = 192;               // inserisco l'ip del nostro server remoto
+  *((unsigned char *)RemoteIP + 1) = 168;          
+  *((unsigned char *)RemoteIP + 2) = 1;        
+  *((unsigned char *)RemoteIP + 3) = 10;
 	TCPLocalPort = 12345;
 	TCPRemotePort = 12007;
   TCPActiveOpen();
@@ -104,6 +104,7 @@ void Channel() {
     }
       if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
       {
+				TCPTxDataCount = sizeof(password);
         memcpy(TCP_TX_BUF, password, sizeof(password)); // send the password on the wire
         TCPTransmitTxBuffer();
         PASSWORD_SENT = 0x1; 

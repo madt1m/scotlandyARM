@@ -15,20 +15,20 @@
 #define __TCPIP_H
 
 // easyWEB-stack definitions
-#define MYIP_1               130                 // our internet protocol (IP) address
-#define MYIP_2               192
-#define MYIP_3               27
-#define MYIP_4               100
+#define MYIP_1               192                 // our internet protocol (IP) address
+#define MYIP_2               168
+#define MYIP_3               1
+#define MYIP_4               20
 
 #define SUBMASK_1            255                 // subnet mask
 #define SUBMASK_2            255
 #define SUBMASK_3            255
 #define SUBMASK_4            0
 
-#define GWIP_1               130                 // standard gateway (used if remote
-#define GWIP_2               192                 // IP is no part of our subnet)
-#define GWIP_3               27
-#define GWIP_4               17
+#define GWIP_1               192                 // standard gateway (used if remote
+#define GWIP_2               168                 // IP is no part of our subnet)
+#define GWIP_3               1
+#define GWIP_4               1
 
 #define RETRY_TIMEOUT        8                   // wait max. 8 x 262ms for an ACK (about 2 sec.)
 #define FIN_TIMEOUT          2                   // max. time to wait for an ACK of a FIN

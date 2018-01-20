@@ -2,7 +2,7 @@ import socket
 import sys
 
 #HOST = "localhost"
-PORT = 12007
+PORT = 80
 PASSWORD = "uurrddll"
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
