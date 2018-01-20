@@ -40,6 +40,11 @@
 #define White           0xFFFF      /* 255, 255, 255 */
 
 
+// ARMBROs:
+#define MAX_WORD_LENGTH		40
+#define MAX_CHAR_PER_LINE	20
+#define MAX_LINES					10
+
 extern void GLCD_Init           (void);
 extern void GLCD_WindowMax      (void);
 extern void GLCD_PutPixel       (unsigned int x, unsigned int y);
@@ -49,6 +54,9 @@ extern void GLCD_Clear          (unsigned short color);
 extern void GLCD_DrawChar       (unsigned int x, unsigned int y, unsigned short *c);
 extern void GLCD_DisplayChar    (unsigned int ln, unsigned int col, unsigned char  c);
 extern void GLCD_DisplayString  (unsigned int ln, unsigned int col, unsigned char *s);
+//ARMBROs
+extern void GLCD_DisplayText		(unsigned int ln, unsigned int col, unsigned char *s);
+//
 extern void GLCD_ClearLn        (unsigned int ln);
 extern void GLCD_Bargraph       (unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int val);
 extern void GLCD_Bitmap         (unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned char *bitmap);

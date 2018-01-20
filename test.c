@@ -22,16 +22,25 @@
 #include "EMAC.h"         // Keil: *.c -> *.h    // ethernet packet driver
 #include "tcpip.h"        // Keil: *.c -> *.h    // easyWEB TCP/IP stack
 
+#define TEXT_TRY "Cantami, o Diva, del pelide Achille l'ira funesta che\
+ infiniti addusse lutti agli Achei, molte anzi tempo all'Orco\
+ generose travolse alme d'eroi,\
+ e di cani e d'augelli orrido pasto\
+ lor salme abbandono' (cosi' di Giove\
+ l'alto consiglio s'adempia), da quando\
+ primamente disgiunse aspra contesa\
+ il re de' prodi Atride e il divo Achille"
+
 unsigned int pagecounter = 100;
 unsigned int adcValue    =   0;
 extern uint32_t SystemFrequency;
-
+unsigned char ChannelStatus = 0;
 extern void TCPClockHandler(void);
 char prova[] = "prova";
 uint8_t PASSWORD_SENT = 0x0;
 char password[8];
-unsigned char* stringa = "NO WEAPONS PROVIDED";
-char response[MAX_TCP_RX_DATA_SIZE];
+unsigned char* stringa = "ARMA. Startup...";
+unsigned char response[MAX_TCP_RX_DATA_SIZE];
 
 volatile DWORD TimeTick  = 0;
 
@@ -47,7 +56,6 @@ void SysTick_Handler (void) {
 void Channel(void);
 
 int main(){
-  unsigned char ChannelStatus = 0;
 	char val;
 	int i = 0; 
 
@@ -60,6 +68,7 @@ int main(){
 	GLCD_SetBackColor(Black);
 	GLCD_SetTextColor(Green);
 	GLCD_DisplayString(0, 0, stringa);
+	//GLCD_DisplayText(0,0,TEXT_TRY);
 	
 	while(i < 8) {
 		val = convertInputToChar(joystick_get_input());
@@ -84,7 +93,7 @@ int main(){
    *(unsigned char *)RemoteIP = 192;               // inserisco l'ip del nostro server remoto
   *((unsigned char *)RemoteIP + 1) = 168;          
   *((unsigned char *)RemoteIP + 2) = 1;        
-  *((unsigned char *)RemoteIP + 3) = 10;
+  *((unsigned char *)RemoteIP + 3) = 8;
 	TCPLocalPort = 12345;
 	TCPRemotePort = 12007;
   TCPActiveOpen();
@@ -100,7 +109,7 @@ void Channel() {
   if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
   {
     if (SocketStatus & SOCK_DATA_AVAILABLE) {   // check if remote TCP sent data
-      memcpy(TCP_RX_BUF, response, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
+      memcpy(response, TCP_RX_BUF, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
 			TCPReleaseRxBuffer();                           // Release the buffer, and signal that new data is available   
       ChannelStatus |= CHANNEL_DATA_AVAILABLE; 
     }
