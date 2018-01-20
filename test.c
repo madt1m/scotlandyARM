@@ -16,6 +16,7 @@
 #include "GLCD.h"
 
 #define extern
+#define CHANNEL_DATA_AVAILABLE      0x01
 
 #include "type.h"
 #include "EMAC.h"         // Keil: *.c -> *.h    // ethernet packet driver
@@ -30,6 +31,7 @@ char prova[] = "prova";
 uint8_t PASSWORD_SENT = 0x0;
 char password[8];
 unsigned char* stringa = "NO WEAPONS PROVIDED";
+char response[MAX_TCP_RX_DATA_SIZE];
 
 volatile DWORD TimeTick  = 0;
 
@@ -45,6 +47,7 @@ void SysTick_Handler (void) {
 void Channel(void);
 
 int main(){
+  unsigned char ChannelStatus = 0;
 	char val;
 	int i = 0; 
 
@@ -96,19 +99,22 @@ int main(){
 void Channel() {
   if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
   {
-    if (SocketStatus & SOCK_DATA_AVAILABLE && !PASSWORD_SENT) {     // check if remote TCP sent data
-      TCPReleaseRxBuffer(); 
+    if (SocketStatus & SOCK_DATA_AVAILABLE) {   // check if remote TCP sent data
+      memcpy(TCP_RX_BUF, response, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
+			TCPReleaseRxBuffer();                           // Release the buffer, and signal that new data is available   
+      ChannelStatus |= CHANNEL_DATA_AVAILABLE; 
     }
-    else{
+    if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
+    {
+			TCPTxDataCount = sizeof(password);
+      memcpy(TCP_TX_BUF, password, sizeof(password)); // send the password on the wire
+      TCPTransmitTxBuffer();
+      PASSWORD_SENT = 0x1;       
+    }
 
+    if (ChannelStatus & CHANNEL_DATA_AVAILABLE){
+      GLCD_DisplayString(response);
     }
-      if (SocketStatus & SOCK_TX_BUF_RELEASED)     // check if buffer is free for TX
-      {
-				TCPTxDataCount = sizeof(password);
-        memcpy(TCP_TX_BUF, password, sizeof(password)); // send the password on the wire
-        TCPTransmitTxBuffer();
-        PASSWORD_SENT = 0x1; 
-      }
-    }
+  }
 }
 
