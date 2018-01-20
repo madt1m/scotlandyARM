@@ -28,3 +28,7 @@ void delay(int c){
 	}
 }
 
+
+void tone(uint8_t f){
+}
+

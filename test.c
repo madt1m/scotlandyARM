@@ -31,6 +31,11 @@
  primamente disgiunse aspra contesa\
  il re de' prodi Atride e il divo Achille"
 
+#define TEST_MENU "[STATUS:ACTIVE]\
+									 -Request Support\
+									 -Mission Briefing\
+									 -Send New Equip\"
+
 unsigned int pagecounter = 100;
 unsigned int adcValue    =   0;
 extern uint32_t SystemFrequency;
