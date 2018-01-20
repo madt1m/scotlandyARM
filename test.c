@@ -127,7 +127,8 @@ void Channel() {
     }
 
     if (ChannelStatus & CHANNEL_DATA_AVAILABLE){
-      GLCD_DisplayText(0,0, response);
+      GLCD_DisplayString(response);
+      ChannelStatus &= ~CHANNEL_DATA_AVAILABLE;
     }
   }
 }
