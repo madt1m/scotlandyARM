@@ -14,6 +14,9 @@
 #include "GLCD.h"
 #include "Font_24x16.h"
 
+//ARMBROs
+#include <string.h>
+
 /*********************** Hardware specific configuration **********************/
 
 /* 8bit to 16bit LCD Interface 
@@ -696,6 +699,50 @@ void GLCD_DisplayString (unsigned int ln, unsigned int col, unsigned char *s) {
     GLCD_DisplayChar(ln, col++, *s++);
   }
 }
+
+/*******************************************************************************
+ARMBROs:
+New function implemented to handle walls of text. WOT. 
+The function will handle words such that they don't get divided/overlapped.
+*******************************************************************************/
+void GLCD_DisplayText (unsigned int ln, unsigned int col, unsigned char *s){
+  char word[MAX_WORD_LENGTH];
+  unsigned int i = 0, t = 0;
+  unsigned int current_ln = ln;
+  unsigned int empty_spaces = MAX_CHAR_PER_LINE;
+	GLCD_Clear(Black);
+	GLCD_WindowMax();
+  while(*s){  // while there is still text
+    while(*s != ' ' && *s){ //until a space is found
+      word[i++] = *s++;
+    }
+		s++;
+    if(i+1 > empty_spaces){
+      empty_spaces = MAX_CHAR_PER_LINE;
+      if(current_ln > MAX_LINES - 1){
+      GLCD_Clear(Black);
+      current_ln = 0;
+      }
+      else{
+        current_ln++;
+      }
+		}
+		
+		if(empty_spaces != MAX_CHAR_PER_LINE){
+			empty_spaces--;
+		}
+		
+    while(t < i){
+      GLCD_DisplayChar(current_ln, MAX_CHAR_PER_LINE - empty_spaces, word[t++]);
+      empty_spaces--;
+      wait_delay(10000000/4);
+    }
+    memset(word, 0, sizeof(word));
+    t = 0;
+    i = 0;
+
+  }
+} 
 
 
 /*******************************************************************************

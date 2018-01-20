@@ -22,6 +22,15 @@
 #include "EMAC.h"         // Keil: *.c -> *.h    // ethernet packet driver
 #include "tcpip.h"        // Keil: *.c -> *.h    // easyWEB TCP/IP stack
 
+#define TEXT_TRY "Cantami, o Diva, del pelide Achille l'ira funesta che\
+ infiniti addusse lutti agli Achei, molte anzi tempo all'Orco\
+ generose travolse alme d'eroi,\
+ e di cani e d'augelli orrido pasto\
+ lor salme abbandono' (cosi' di Giove\
+ l'alto consiglio s'adempia), da quando\
+ primamente disgiunse aspra contesa\
+ il re de' prodi Atride e il divo Achille"
+
 unsigned int pagecounter = 100;
 unsigned int adcValue    =   0;
 extern uint32_t SystemFrequency;
@@ -30,7 +39,7 @@ extern void TCPClockHandler(void);
 char prova[] = "prova";
 uint8_t PASSWORD_SENT = 0x0;
 char password[8];
-unsigned char* stringa = "NO WEAPONS PROVIDED";
+unsigned char* stringa = "ARMA. Startup...";
 unsigned char response[MAX_TCP_RX_DATA_SIZE];
 
 volatile DWORD TimeTick  = 0;
@@ -59,6 +68,7 @@ int main(){
 	GLCD_SetBackColor(Black);
 	GLCD_SetTextColor(Green);
 	GLCD_DisplayString(0, 0, stringa);
+	//GLCD_DisplayText(0,0,TEXT_TRY);
 	
 	while(i < 8) {
 		val = convertInputToChar(joystick_get_input());
@@ -112,7 +122,7 @@ void Channel() {
     }
 
     if (ChannelStatus & CHANNEL_DATA_AVAILABLE){
-      GLCD_DisplayString(0,0, response);
+      GLCD_DisplayText(0,0, response);
     }
   }
 }
