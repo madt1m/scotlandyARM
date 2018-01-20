@@ -2,8 +2,8 @@ import socket
 import sys
 
 #HOST = "localhost"
-PORT = 80
-PASSWORD = "uurrddll"
+PORT = 12007
+PASSWORD = "uuuuuuuu"
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	s.bind(('', PORT))
@@ -15,12 +15,12 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	print(addr)
 	data = conn.recv(8)
 	print(data.decode())
-	if data == PASSWORD:  
-		res = bytes.fromhex('FF')
-		conn.send(res)
+	if data == PASSWORD.strip():  
+		res = "password corretta"
+		conn.send(res.encode())
 	else:
-	 	res = bytes.fromhex('00')
-	 	conn.send(res)
+	 	res = "password errata, autodistruzione imminente"
+	 	conn.send(res.encode())
 	conn.close()
 
 

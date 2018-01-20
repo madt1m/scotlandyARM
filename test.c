@@ -114,6 +114,7 @@ void Channel() {
 
     if (ChannelStatus & CHANNEL_DATA_AVAILABLE){
       GLCD_DisplayString(response);
+      ChannelStatus &= ~CHANNEL_DATA_AVAILABLE;
     }
   }
 }
