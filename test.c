@@ -17,6 +17,7 @@
 
 #define extern
 #define CHANNEL_DATA_AVAILABLE      0x01
+#define PASSWORD_LEN								9
 
 #include "type.h"
 #include "EMAC.h"         // Keil: *.c -> *.h    // ethernet packet driver
@@ -34,29 +35,30 @@
 #define TEST_MENU "[STATUS:ACTIVE]\
 									 -Request Support\
 									 -Mission Briefing\
-									 -Send New Equip\"
+									 -Send New Equip"
+
+char* imperial_march = 
+"10 500 24 100\
+ 10 500 24 100\
+ 10 500 24 100\
+ 6 300 24 100\
+ 13 100 24 50\
+ 10 500 24 50\
+ 6 300 24 100\
+ 13 100 24 50\
+ 10 800 24 50";
 
 unsigned int pagecounter = 100;
 unsigned int adcValue    =   0;
-extern uint32_t SystemFrequency;
 unsigned char ChannelStatus = 0;
+extern unsigned int SystemFrequency;
 extern void TCPClockHandler(void);
 char prova[] = "prova";
 uint8_t PASSWORD_SENT = 0x0;
-char password[8];
-unsigned char* stringa = "ARMA. Startup...";
+char password[PASSWORD_LEN];
+unsigned char* stringa = "Lord Vader personal device. Good morning, supreme lord. Please identify yourself, if you mind, your greatness.";
 unsigned char response[MAX_TCP_RX_DATA_SIZE];
 
-volatile DWORD TimeTick  = 0;
-
-void SysTick_Handler (void) {
-  TimeTick++;
-  if (TimeTick >= 20) {
-    TimeTick = 0;
-    LPC_GPIO2->FIOPIN ^= 1 << 0;
-    TCPClockHandler();  
-  }  
-}
 
 void Channel(void);
 
@@ -68,16 +70,33 @@ int main(){
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
 
 	joystick_init();
+	speaker_init();
 	GLCD_Init();
 	GLCD_Clear(Black);
 	GLCD_SetBackColor(Black);
-	GLCD_SetTextColor(Green);
-	GLCD_DisplayString(0, 0, stringa);
+	GLCD_SetTextColor(Red);
+	//GLCD_DisplayText(0, 0, stringa);
 	//GLCD_DisplayText(0,0,TEXT_TRY);
-	
-	while(i < 8) {
+	//playMusic(imperial_march);
+	while(i < PASSWORD_LEN) {
 		val = convertInputToChar(joystick_get_input());
 		if(val != 'q'){
+			switch(val){
+				case 'l':
+					tone(300, 785);
+					break;
+				case 'd':
+					tone(300, 622);
+					break;
+				case 'u':
+					tone(300, 932);
+					break;
+				case 'r':
+					tone(300, 800);
+					break;
+				default:
+					break;
+			}
 			password[i] = val;
 			i++;
 		}
@@ -127,7 +146,7 @@ void Channel() {
     }
 
     if (ChannelStatus & CHANNEL_DATA_AVAILABLE){
-      GLCD_DisplayString(response);
+      GLCD_DisplayText(0,0,response);
       ChannelStatus &= ~CHANNEL_DATA_AVAILABLE;
     }
   }

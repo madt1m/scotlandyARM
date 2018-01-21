@@ -716,7 +716,8 @@ void GLCD_DisplayText (unsigned int ln, unsigned int col, unsigned char *s){
     while(*s != ' ' && *s){ //until a space is found
       word[i++] = *s++;
     }
-		s++;
+		if(*s)
+			s++;
     if(i+1 > empty_spaces){
       empty_spaces = MAX_CHAR_PER_LINE;
       if(current_ln > MAX_LINES - 1){

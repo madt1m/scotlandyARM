@@ -8,10 +8,10 @@
 #include <stdint.h>
 
 //Codes for joystick positions
-#define JOYSTICK_UP						0xF
-#define JOYSTICK_DOWN					0x1D
-#define JOYSTICK_RIGHT				0x17
-#define JOYSTICK_LEFT					0x1B
+#define JOYSTICK_RIGHT				0xF
+#define JOYSTICK_LEFT					0x1D
+#define JOYSTICK_DOWN					0x17
+#define JOYSTICK_UP						0x1B
 #define JOYSTICK_SELECT				0x1E
 
 
