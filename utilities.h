@@ -44,5 +44,6 @@ void delay(int);
 void tone(unsigned int duration, unsigned int frequency);
 void speaker_init(void);
 void playMusic(char* s);
+uint8_t menuHandler(unsigned char** menu);
 
 #endif

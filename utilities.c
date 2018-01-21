@@ -9,6 +9,7 @@
 #include "tcpip.h"
 #include "timer.h"
 
+#define BAR_STRING 					"*==================*"
 unsigned char TIME_ELAPSED = 0x0;
 volatile DWORD TimeTick = 0;
 
@@ -105,3 +106,8 @@ void playMusic(char* s){
 		memset(duration, 0, sizeof(duration));
 	}
 }
+
+uint8_t menuHandler(unsigned char** menu){
+}
+	
+	

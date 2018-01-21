@@ -14,6 +14,7 @@
 #include "system_LPC17xx.h"
 #include "lpc17xx.h"
 #include "GLCD.h"
+#include "bmp_logo.h"
 
 #define extern
 #define CHANNEL_DATA_AVAILABLE      0x01
@@ -32,11 +33,24 @@
  primamente disgiunse aspra contesa\
  il re de' prodi Atride e il divo Achille"
 
-#define TEST_MENU "[STATUS:ACTIVE]\
-									 -Request Support\
-									 -Mission Briefing\
-									 -Send New Equip"
+const char* menu[] = {"-Send TIE fighters",
+												"-TOP SECRET intel",
+												"-Praise the empire!"};
 
+const char* vader_ascii[] ={  "| _______||_______ |",
+															"|/ ----- \\/ ----- \\|",
+															"  (     )  (     )  ",
+															"\\  ----- () -----  /",
+															" \\      /||\\      / ",
+															"  \\    /||||\\    /  ",
+															"   \\  /||||||\\  /   ",
+															"    \\o========o/    ",
+															"..__|`-._  _.-'|__..",
+															"    |    `'    |     "};
+
+const char* tie_ascii[] = {" /  _  \\ ",
+														 "|-=(_)=-|",
+														 " \\     / "};
 char* imperial_march = 
 "10 500 24 100\
  10 500 24 100\
@@ -58,8 +72,6 @@ uint8_t PASSWORD_SENT = 0x0;
 char password[PASSWORD_LEN];
 unsigned char* stringa = "Lord Vader personal device. Good morning, supreme lord. Please identify yourself, if you mind, your greatness.";
 unsigned char response[MAX_TCP_RX_DATA_SIZE];
-
-
 void Channel(void);
 
 int main(){
