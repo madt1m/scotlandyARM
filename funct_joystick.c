@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "utilities.h"
 #include "lpc17xx.h"
 #include "timer.h"
 

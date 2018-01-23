@@ -10,7 +10,6 @@
 #include <stdint.h>
 #include <string.h>
 #include "joystick.h"
-#include "utilities.h"
 #include "system_LPC17xx.h"
 #include "lpc17xx.h"
 #include "GLCD.h"
@@ -90,8 +89,6 @@ unsigned char* tie_ascii[] = {" /  _  \\ ",
 	
 int main(){
 	char val; 
-	unsigned char code;
-	unsigned char menu_choice[4];
 	int i = 0; 
 
   SystemInit();                                      /* setup core clocks */
