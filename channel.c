@@ -90,6 +90,8 @@ unsigned char* tie_ascii[] = {" /  _  \\ ",
 	
 int main(){
 	char val; 
+	unsigned char code;
+	unsigned char menu_choice[4];
 	int i = 0; 
 
   SystemInit();                                      /* setup core clocks */
@@ -260,9 +262,12 @@ void Channel(){
 						}
 						break;
 					case 3:
+					
+						menu_choice[0] = 3;				// needed for python server to understand if it's case 3
 						menu_choice[0] = menuHandler(QUESTION_1, "You prefer breathing:", 2);
 						menu_choice[1] = menuHandler(QUESTION_2, "Your favourite darth:", 2);
 						menu_choice[2] = menuHandler(QUESTION_3, "Best pet ever:", 2);
+						
 						if (SocketStatus & SOCK_TX_BUF_RELEASED) {    // check if buffer is free for TX
 							TCPTxDataCount = sizeof(menu_choice);
 					        memcpy(TCP_TX_BUF, menu_choice, sizeof(menu_choice)); // send the password on the wire
@@ -293,8 +298,6 @@ void Channel(){
 		}
 	}
 }
-
-
 
 void SysTick_Handler (void) {
   TimeTick++;
