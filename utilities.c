@@ -79,7 +79,7 @@ void speaker_init(){
 
 void playMusic(char* s){
 	int musical_notes[MUSICAL_NOTES_NUMBER] = {440,466,494,523,554,587,622,659,698,740,785,831,
-																							880, 932, 988, 1046, 1108, 1174, 1244, 1318, 1397, 1480, 1568, 1661, 1};
+												880, 932, 988, 1046, 1108, 1174, 1244, 1318, 1397, 1480, 1568, 1661, 1};
 	// notes will be encoded with up to 2 characters, delay with up to 4
 	char note[3];
 	char duration[5];

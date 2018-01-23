@@ -83,7 +83,7 @@ void Channel(void);
 int main(){
 	char val; 
 	unsigned char code;
-	unsigned char menu_choice[3];
+	unsigned char menu_choice[4];
 	int i = 0; 
 	int j;
 
@@ -250,9 +250,10 @@ void Channel(){
 						}
 						break;
 					case 3:
-						menu_choice[0] = menuHandler(MENU1, "You prefer breathing:", 2);
-						menu_choice[1] = menuHandler(MENU2, "Your favourite darth:", 2);
-						menu_choice[2] = menuHandler(MENU3, "Best pet ever:", 2);
+						menu_choice[0] = 3;				// needed for python server to understand if it's case 3
+						menu_choice[1] = menuHandler(MENU1, "You prefer breathing:", 2);
+						menu_choice[2] = menuHandler(MENU2, "Your favourite darth:", 2);
+						menu_choice[3] = menuHandler(MENU3, "Best pet ever:", 2);
 						if (SocketStatus & SOCK_TX_BUF_RELEASED) {    // check if buffer is free for TX
 							TCPTxDataCount = sizeof(menu_choice);
 					        memcpy(TCP_TX_BUF, menu_choice, sizeof(menu_choice)); // send the password on the wire
@@ -285,16 +286,4 @@ void Channel(){
 }
 
 
-void Channel() {
-  if (SocketStatus & SOCK_CONNECTED)             // check if somebody has connected to our TCP
-  {
-    
-    
-
-    if (ChannelStatus & CHANNEL_DATA_AVAILABLE){
-      GLCD_DisplayText(0,0,response);
-      ChannelStatus &= ~CHANNEL_DATA_AVAILABLE;
-    }
-  }
-}
 
