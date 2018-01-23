@@ -9,7 +9,6 @@
 *********************************************************************************************************/
 #include "lpc17xx.h"
 #include "timer.h"
-
 /******************************************************************************
 ** Function name:		Timer0_IRQHandler
 **
@@ -20,10 +19,22 @@
 **
 ******************************************************************************/
 
+int counter = 0;
+int c = 0;
+
+
 void TIMER0_IRQHandler (void)
 {
-
   LPC_TIM0->IR = 1;			/* clear interrupt flag */
+  if(counter == 0){
+  	LPC_GPIO0->FIOSET = 0x04000000;
+	counter++;
+		c++;
+  }
+  else{
+  LPC_GPIO0->FIOCLR = 0x04000000;
+	counter--;
+  }
   return;
 }
 
@@ -39,6 +50,7 @@ void TIMER0_IRQHandler (void)
 ******************************************************************************/
 void TIMER1_IRQHandler (void)
 {
+	unsigned char TIME_ELAPSED = 0x01;
   LPC_TIM1->IR = 1;			/* clear interrupt flag */
   return;
 }

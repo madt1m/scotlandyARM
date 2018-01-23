@@ -16,16 +16,16 @@
 
 
 // Get value
-uint8_t joystickRead(void);
+extern uint8_t joystickRead(void);
 
 // Configures Joystick pins
-void joystick_init(void);
+extern void joystick_init(void);
 
 // Gets a single, debounced input from the Joystick
-uint8_t joystick_get_input(void);
+extern uint8_t joystick_get_input(void);
 
 // Reads Joystick state
-uint8_t joystick_state(void);
+extern uint8_t joystick_state(void);
 
 
 

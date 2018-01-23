@@ -20,7 +20,7 @@ uint8_t joystick_get_input() {
 		while(1) {
 			value = (LPC_GPIO1->FIOPIN >> 25) & 0x1F;
 			if(value != old_value && old_value != 0x80) {
-				delay(5);
+				delayMs(0, 50);
 				return value;
 			}
 			if(old_value == 0x80){
