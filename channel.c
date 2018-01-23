@@ -14,78 +14,17 @@
 #include "system_LPC17xx.h"
 #include "lpc17xx.h"
 #include "GLCD.h"
-#include "bmp_logo.h"
 #include "timer.h"
-
-#define extern
-#define CHANNEL_DATA_AVAILABLE      0x01
-#define PASSWORD_LEN				9
-#define WRONG_PASSWORD  = {"I hope you had fun with the sound simulator! Have a great day"}
-#define HAPPY_LINE = 	{":) XD :D =) :X xD :/ ;)"}
-
-
-unsigned char ChannelStatus;
-#define CHANNEL_INIT				0x00
-#define PASSWORD_SENT 				0x01
-#define WAIT_FOR_PROFILE			0x02
-#define CHANNEL_CONNECTED 			0x04
-#define CODE_SENT 					0x08
-
-
-
-
 #include "type.h"
 #include "EMAC.h"         // Keil: *.c -> *.h    // ethernet packet driver
 #include "tcpip.h"        // Keil: *.c -> *.h    // easyWEB TCP/IP stack
-
-#define TEXT_TRY "Cantami, o Diva, del pelide Achille l'ira funesta che\
- infiniti addusse lutti agli Achei, molte anzi tempo all'Orco\
- generose travolse alme d'eroi,\
- e di cani e d'augelli orrido pasto\
- lor salme abbandono' (cosi' di Giove\
- l'alto consiglio s'adempia), da quando\
- primamente disgiunse aspra contesa\
- il re de' prodi Atride e il divo Achille"
-
-
-char* imperial_march = 
-"10 500 24 100\
- 10 500 24 100\
- 10 500 24 100\
- 6 300 24 100\
- 13 100 24 50\
- 10 500 24 50\
- 6 300 24 100\
- 13 100 24 50\
- 10 800 24 50";
-
- char* imperial_march_2 = 
- "17 500 24 100\
-  17 500 24 100\
-  17 500 24 100\
-  18 300 24 100\
-  13 100 24 50\
-  9 500 24 50\
-  6 300 24 100\
-  13 100 24 50\
-  10 800 24 50";
-
-unsigned int pagecounter = 100;
-unsigned int adcValue    =   0;
-extern unsigned int SystemFrequency;
-extern void TCPClockHandler(void);
-char prova[] = "prova";
-char password[PASSWORD_LEN];
-unsigned char* stringa = "Lord Vader personal device. Good morning, supreme lord. Please identify yourself, if you mind, your greatness.";
-unsigned char response[MAX_TCP_RX_DATA_SIZE];
-void Channel(void);
+#include "channel.h"
 
 int main(){
 	char val; 
 	unsigned char code;
 	unsigned char menu_choice[4];
 	int i = 0; 
-	int j;
 
   SystemInit();                                      /* setup core clocks */
   SysTick_Config(SystemFrequency/100);               /* Generate interrupt every 10 ms */
@@ -152,6 +91,9 @@ int main(){
 
 
 void Channel(){
+		unsigned char code;
+		unsigned char menu_choice[3];
+		int j;
 
 	if (SocketStatus & SOCK_CONNECTED){
 		switch (ChannelStatus) {
@@ -171,7 +113,7 @@ void Channel(){
 				    memcpy(response, TCP_RX_BUF, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
 					TCPReleaseRxBuffer();                           // Release the buffer, and signal that new data is available   
 				 	
-				 	if(!strcmp(response, "200")) {
+				 	if(!strcmp(response, OK_CODE)) {
 				 		
 				 		delayMs(0,5000);
 				 		playMusic(imperial_march_2);
@@ -179,7 +121,7 @@ void Channel(){
 				 		delayMs(0,2000);
 
 				 		GLCD_Clear(Black);
-    					delayMs(0, 2000)
+    				delayMs(0, 2000);
 						GLCD_SetBackColor(Black);
 						GLCD_SetTextColor(Red);
 						welcome();
@@ -250,10 +192,12 @@ void Channel(){
 						}
 						break;
 					case 3:
+					
 						menu_choice[0] = 3;				// needed for python server to understand if it's case 3
-						menu_choice[1] = menuHandler(MENU1, "You prefer breathing:", 2);
-						menu_choice[2] = menuHandler(MENU2, "Your favourite darth:", 2);
-						menu_choice[3] = menuHandler(MENU3, "Best pet ever:", 2);
+						menu_choice[0] = menuHandler(QUESTION_1, "You prefer breathing:", 2);
+						menu_choice[1] = menuHandler(QUESTION_2, "Your favourite darth:", 2);
+						menu_choice[2] = menuHandler(QUESTION_3, "Best pet ever:", 2);
+						
 						if (SocketStatus & SOCK_TX_BUF_RELEASED) {    // check if buffer is free for TX
 							TCPTxDataCount = sizeof(menu_choice);
 					        memcpy(TCP_TX_BUF, menu_choice, sizeof(menu_choice)); // send the password on the wire
