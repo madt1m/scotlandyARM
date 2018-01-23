@@ -8,8 +8,9 @@
 #include "system_LPC17xx.h"
 #include "tcpip.h"
 #include "timer.h"
+#include "GLCD.h"
 
-#define BAR_STRING 					"*==================*"
+//#define BAR_STRING 					"*==================*"
 unsigned char TIME_ELAPSED = 0x0;
 volatile DWORD TimeTick = 0;
 
@@ -107,7 +108,129 @@ void playMusic(char* s){
 	}
 }
 
-uint8_t menuHandler(unsigned char** menu){
+unsigned char menuHandler(unsigned char **text, unsigned char* CHOICE_CUSTOM_TEXT, unsigned int NUM_ENTRIES){
+	unsigned char current = 0;
+	int j;
+
+	GLCD_Clear(Black);
+	GLCD_DisplayString(0,0,BAR_LINE);
+	GLCD_DisplayString(1,0,VERSION);
+	GLCD_DisplayString(2,0,CHOICE_CUSTOM_TEXT);
+	GLCD_DisplayString(8,0,CREDITS);
+	GLCD_DisplayString(9,0,BAR_LINE);
+
+//	GLCD_DisplayString(4,0,MENU);
+	while(val != JOYSTICK_SELECT) {
+
+		for(j=0; j < NUM_ENTRIES; j++){
+			if(current == j){
+				GLCD_SetBackColor(LightGrey);
+			}
+			else{
+				GLCD_SetBackColor(Black);
+			}
+			GLCD_DisplayString(j+4,0,text[j]);
+		}
+
+		val = joystick_get_input();
+		switch(val){
+			case JOYSTICK_UP:
+				if(current > 0){
+					current++;
+				}
+				break;
+			case JOYSTICK_DOWN:
+				if(current < NUM_ENTRIES){
+					current--;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	return current;
 }
+
+void welcome() {
+	char line[20];
+	int i, j;
+	TIME_ELAPSED = 0x0;
+	int r; 
+
+	init_timer(1, 4000*(25000000/1000));
+	enable_timer(1);
+	srand(8);   // should only be called once
+	j=0;
+	
+	while(!TIME_ELAPSED){
+		for (i = 0; i < sizeof(line); i++) {
+			r = rand()%2;
+			line[i] = itoa(r);
+		}
+		GLCD_DisplayString(j,0,line);
+		j++;
+		if(j == 9)
+			j=0;
+	}
+	reset_timer(1);
+	disable_timer(1);
+	GLCD_Clear(Black);
+	delayMs(0, 2000);
+	return;
+}
+
+void praiseTheEmpire() {
+	GLCD_Clear(Black);
+	
+	GLCD_DisplayString(vader_ascii[0]);
+	tone(500, musical_notes[10]);
+	tone(100, musical_notes[24]);
+
+	GLCD_DisplayString(vader_ascii[1]);
+	tone(500, musical_notes[10]);
+	tone(100, musical_notes[24]);
+	
+	GLCD_DisplayString(vader_ascii[2]);
+	tone(500, musical_notes[10]);
+	tone(100, musical_notes[24]);
+	
+	GLCD_DisplayString(vader_ascii[3]);
+	tone(300, musical_notes[6]);
+	tone(100, musical_notes[24]);
+	
+	GLCD_DisplayString(vader_ascii[4]);
+	tone(100, musical_notes[13]);
+	tone(50, musical_notes[24]);
+	
+	GLCD_DisplayString(vader_ascii[5]);
+	tone(500, musical_notes[10]);
+	tone(50, musical_notes[24]);
+	
+	GLCD_DisplayString(vader_ascii[6]);
+	tone(300, musical_notes[6]);
+	tone(100, musical_notes[24]);
+	
+	GLCD_DisplayString(vader_ascii[7]);
+	tone(100, musical_notes[13]);
+	tone(50, musical_notes[24]);
+
+	GLCD_DisplayString(vader_ascii[8]);
+	tone(800, musical_notes[10]);
+	tone(100, musical_notes[24]);
+
+	GLCD_DisplayString(vader_ascii[9]);
+	playMusic(imperial_march_2);
+	delayMs(0, 5000);
+	return;
+}
+
+
+
+
+
+	
+
+
+
 	
 	
