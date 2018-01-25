@@ -27,7 +27,7 @@ volatile DWORD TimeTick = 0;
 unsigned char* WRONG_PASSWORD  = {"I hope you had fun with the sound simulator! Have a great day"};
 unsigned char* HAPPY_LINE = 	{":) XD :D =) :X xD :/ ;)"};
 unsigned char OK_CODE[] = "200";
-unsigned char* stringa = "Lord Vader personal device. Good morning, supreme lord. Please identify yourself, if you mind, your greatness.";
+unsigned char* stringa = "Welcome onboard your SOUND SIMULATOR! Please enjoy making music.";
 
 unsigned char * TEXT_TRY = "Cantami, o Diva, del pelide Achille l'ira funesta che\
  infiniti addusse lutti agli Achei, molte anzi tempo all'Orco\
@@ -61,14 +61,14 @@ char* imperial_march =
 
 char* imperial_march_2 = 
  "17 500 24 100\
-  17 500 24 100\
-  17 500 24 100\
-  18 300 24 100\
-  13 100 24 50\
-  9 500 24 50\
-  6 300 24 100\
-  13 100 24 50\
-  10 800 24 50";
+ 17 500 24 100\
+ 17 500 24 100\
+ 18 300 24 100\
+ 13 100 24 50\
+ 9 500 24 50\
+ 6 300 24 100\
+ 13 100 24 50\
+ 10 800 24 50";
 
 
 unsigned char* vader_ascii[] ={  "| _______||_______ |",
@@ -86,6 +86,15 @@ unsigned char* tie_ascii[] = {" /  _  \\ ",
 						   "|-=(_)=-|",
 						   " \\     / "};
 
+unsigned char* binary_strings[] = {"0110110 1 011 10 10 10",
+																		"0101 01 0010 101 000101010",
+																	 "010110 01 10 10 1011 01  1",
+																	 "010111 1 1 01 1100110  1001",
+	                                 "0101 010 0 10 10 11 1010 1 ",
+																	 "1 101 001 10001 101 0 1010 ",
+																	 " 1 11 11 00 101 01 01 01 01 0",
+																	 "1 01010 111 01 001 1 1 01 01 0"};
+
 	
 int main(){
 	char val; 
@@ -101,7 +110,7 @@ int main(){
 	GLCD_Clear(White);
 	GLCD_SetBackColor(White);
 	GLCD_SetTextColor(DarkGreen);
-	//GLCD_DisplayText(0, 0, stringa);
+	GLCD_DisplayText(0, 0, stringa, White);
 	//GLCD_DisplayText(0,0,TEXT_TRY);
 	//playMusic(imperial_march);
 	while(i < PASSWORD_LEN) {
@@ -128,16 +137,9 @@ int main(){
 		}
 	}
 
-  LPC_GPIO0->FIODIR   |= 1 << 21;					// ÉèÖÃLEDÓÐÐ§
-  LPC_GPIO0->FIOPIN	  |= 1 << 21;
+  //LPC_GPIO0->FIODIR   |= 1 << 21;					// ÉèÖÃLEDÓÐÐ§
+  //LPC_GPIO0->FIOPIN	  |= 1 << 21;
 
-  LPC_GPIO2->FIODIR   |= 1 << 0;                    /* P2.0 defined as Output (LED) */
-
-  LPC_PINCON->PINSEL3 |=  (3ul<<30);                   /* P1.31 is AD0.5 */
-  LPC_SC->PCONP       |=  (1<<12);                   /* Enable power to ADC block */
-  LPC_ADC->ADCR        =  (1<< 5) |                  /* select AD0.5 pin */
-                          (4<< 8) |                  /* ADC clock is 25MHz/5 */
-                          (1<<21);                   /* enable ADC */ 
   TCPLowLevelInit();
 
    *(unsigned char *)RemoteIP = 192;               // inserisco l'ip del nostro server remoto
@@ -147,6 +149,7 @@ int main(){
 	TCPLocalPort = 12345;
 	TCPRemotePort = 12007;
   TCPActiveOpen();
+	//connection_open(192,168,1,8, 12345, 12345);
 
   while(1){
   	DoNetworkStuff();
@@ -158,7 +161,7 @@ int main(){
 void Channel(){
 		unsigned char code;
 		unsigned char code_to_send[1];
-		unsigned char menu_choice[3];
+		unsigned char menu_choice[4];
 		int j;
 
 	if (SocketStatus & SOCK_CONNECTED){
@@ -193,10 +196,10 @@ void Channel(){
 						welcome();
 				 	}
 				 	else { 
-				 		GLCD_DisplayText(4,0,WRONG_PASSWORD);
+				 		GLCD_DisplayText(4,0,WRONG_PASSWORD, White);
 				 		j=0;
 				 		while(1){
-				 			GLCD_DisplayText(j, (j*3)%20 ,HAPPY_LINE);
+				 			GLCD_DisplayText(j, (j*3)%20 ,HAPPY_LINE, White);
 				 			j++;
 				 			if(j == 9)
 				 				j=0;
@@ -207,11 +210,11 @@ void Channel(){
     			break;
     		case CHANNEL_CONNECTED:
     			code = menuHandler(MAIN_MENU, "GRAB AN OPTION:", 3);
-    			if(code != 1) {
+    			if(code != 0) {
 						code_to_send[0] = code;
-	    			if (SocketStatus & SOCK_TX_BUF_RELEASED) {    // check if buffer is free for TX
+	    			if (SocketStatus & SOCK_TX_BUF_RELEASED) { 
 						TCPTxDataCount = sizeof(code_to_send);
-				        memcpy(TCP_TX_BUF, code_to_send, sizeof(code_to_send)); // send the password on the wire
+				        memcpy(TCP_TX_BUF, code_to_send, sizeof(code_to_send));
 				        TCPTransmitTxBuffer();
 				    }
 				}
@@ -225,12 +228,12 @@ void Channel(){
 			case CODE_SENT:
 
 				switch(code){
-					case 2:
+					case 1:
 						if (SocketStatus & SOCK_DATA_AVAILABLE) {   // check if remote TCP sent data
 				    		memcpy(response, TCP_RX_BUF, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
 							TCPReleaseRxBuffer();
 
-							GLCD_DisplayText(1,0,response);
+							GLCD_DisplayText(1,0,response, Black);
 							delayMs(0,2000);
 
 							GLCD_DisplayString(3,0,tie_ascii[0]);
@@ -258,9 +261,8 @@ void Channel(){
 							ChannelStatus = CHANNEL_CONNECTED;
 						}
 						break;
-					case 3:
+					case 2:
 					
-						menu_choice[0] = 3;				// needed for python server to understand if it's case 3
 						menu_choice[0] = menuHandler(QUESTION_1, "You prefer breathing:", 2);
 						menu_choice[1] = menuHandler(QUESTION_2, "Your favourite darth:", 2);
 						menu_choice[2] = menuHandler(QUESTION_3, "Best pet ever:", 2);
@@ -353,12 +355,12 @@ unsigned char menuHandler(unsigned char** text, unsigned char* CHOICE_CUSTOM_TEX
 		switch(val){
 			case JOYSTICK_UP:
 				if(current > 0){
-					current++;
+					current--;
 				}
 				break;
 			case JOYSTICK_DOWN:
-				if(current < NUM_ENTRIES){
-					current--;
+				if(current < NUM_ENTRIES-1){
+					current++;
 				}
 				break;
 			default:
@@ -369,26 +371,22 @@ unsigned char menuHandler(unsigned char** text, unsigned char* CHOICE_CUSTOM_TEX
 }
 
 void welcome() {
-	char line[20];
-	char *p = line;
 	int i, j, r;
-	unsigned char TIME_ELAPSED = 0x0;
+	unsigned int count = 0;
+	TIME_ELAPSED = 0x0;
+	
 
 	init_timer(1, 4000*(25000000/1000));
 	enable_timer(1);
 	srand(8);   // should only be called once
 	j=0;
-	
+
 	while(!TIME_ELAPSED){
-		for (i = 0; i < sizeof(line); i++) {
-			r = rand()%2;
-			sprintf(p, "%d", r);
-			p++;
-		}
-		GLCD_DisplayString(j,0,line);
+		GLCD_DisplayString(j,0,binary_strings[rand()%8]);
 		j++;
-		if(j == 9)
+		if(j == 10)
 			j=0;
+		count++;		
 	}
 	reset_timer(1);
 	disable_timer(1);

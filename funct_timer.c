@@ -50,6 +50,8 @@ void delayMs(uint8_t timer_num, uint32_t delayInMs)
 	/* wait until delay time has elapsed */
 	while (LPC_TIM1->TCR & 0x01);
   }
+	reset_timer(timer_num);
+	disable_timer(timer_num); //apparently timer is not stopping without these two.
   return;
 }
 

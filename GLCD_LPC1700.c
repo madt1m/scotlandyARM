@@ -705,12 +705,12 @@ ARMBROs:
 New function implemented to handle walls of text. WOT. 
 The function will handle words such that they don't get divided/overlapped.
 *******************************************************************************/
-void GLCD_DisplayText (unsigned int ln, unsigned int col, unsigned char *s){
+void GLCD_DisplayText (unsigned int ln, unsigned int col, unsigned char *s, unsigned short color){
   char word[MAX_WORD_LENGTH];
   unsigned int i = 0, t = 0;
   unsigned int current_ln = ln;
   unsigned int empty_spaces = MAX_CHAR_PER_LINE;
-	GLCD_Clear(Black);
+	GLCD_Clear(color);
 	GLCD_WindowMax();
   while(*s){  // while there is still text
     while(*s != ' ' && *s){ //until a space is found

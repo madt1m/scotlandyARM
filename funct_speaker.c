@@ -11,10 +11,10 @@ We will use two timer for the purpose.
 NOTE: duration has to be provided in ms, frequency in Hz
 ********************************************************/
 
+unsigned char TIME_ELAPSED = 0x0;
 
 void tone(unsigned int duration, unsigned int frequency){
-	
-	unsigned char TIME_ELAPSED = 0x0;
+	TIME_ELAPSED = 0x0;
 	// Outer timer to handle duration
 	init_timer(1, duration*(25000000/1000));
 	init_timer(0, (25000000)/(2*frequency));

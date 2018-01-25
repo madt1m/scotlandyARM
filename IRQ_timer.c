@@ -9,6 +9,7 @@
 *********************************************************************************************************/
 #include "lpc17xx.h"
 #include "timer.h"
+#include "speaker.h"
 /******************************************************************************
 ** Function name:		Timer0_IRQHandler
 **
@@ -50,7 +51,7 @@ void TIMER0_IRQHandler (void)
 ******************************************************************************/
 void TIMER1_IRQHandler (void)
 {
-	unsigned char TIME_ELAPSED = 0x01;
+	TIME_ELAPSED = 0x01;
   LPC_TIM1->IR = 1;			/* clear interrupt flag */
   return;
 }

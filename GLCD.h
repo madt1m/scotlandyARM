@@ -55,7 +55,7 @@ extern void GLCD_DrawChar       (unsigned int x, unsigned int y, unsigned short 
 extern void GLCD_DisplayChar    (unsigned int ln, unsigned int col, unsigned char  c);
 extern void GLCD_DisplayString  (unsigned int ln, unsigned int col, unsigned char *s);
 //ARMBROs
-extern void GLCD_DisplayText		(unsigned int ln, unsigned int col, unsigned char *s);
+extern void GLCD_DisplayText		(unsigned int ln, unsigned int col, unsigned char *s, unsigned short color);
 //
 extern void GLCD_ClearLn        (unsigned int ln);
 extern void GLCD_Bargraph       (unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int val);
