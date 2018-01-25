@@ -31,8 +31,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 			
 			data = conn.recv(1).decode()
 			if data == 2:
-				res = urllib.urlopen('http://api.hostip.info/get_html.php?ip=' + addr + '&position=true').read()
-				
+				req = urllib.request.Request('http://api.hostip.info/get_html.php?ip=' + addr + '&position=true', headers={'User-Agent': 'Mozilla/5.0'})
+				pos = urllib.request.urlopen(req).read().decode().splitlines()
+				res = pos[0] + " " +  pos[3] + " " + pos[4] + " " + post[5]
 			elif data == 3:
 
 				ans = int(conn.recv(3).decode());

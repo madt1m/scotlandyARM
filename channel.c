@@ -233,7 +233,7 @@ void Channel(){
 				    		memcpy(response, TCP_RX_BUF, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
 							TCPReleaseRxBuffer();
 
-							GLCD_DisplayText(1,0,response, Black);
+							GLCD_DisplayText(0,0,response, Black);
 							delayMs(0,2000);
 
 							GLCD_DisplayString(3,0,tie_ascii[0]);
