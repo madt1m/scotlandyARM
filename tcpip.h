@@ -15,7 +15,7 @@
 #define __TCPIP_H
 
 // easyWEB-stack definitions
-#define MYIP_1               192                 // our internet protocol (IP) address
+#define MYIP_1               192                // our internet protocol (IP) address
 #define MYIP_2               168
 #define MYIP_3               1
 #define MYIP_4               20

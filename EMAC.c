@@ -13,7 +13,7 @@
  *****  Keil: Module modified for use with Philips            *****
  *****        LPC2378 EMAC Ethernet controller                *****
  *****                                                        *****
- ******************************************************************/
+ *****************************************************************/
 
 #include "EMAC.h"
 #include "tcpip.h"
