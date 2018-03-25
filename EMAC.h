@@ -22,7 +22,7 @@
 #define NUM_TX_FRAG         2           /* Num.of TX Fragments 3*1536= 4.6kB */
 #define ETH_FRAG_SIZE       1536        /* Packet Fragment size 1536 Bytes   */
 
-#define ETH_MAX_FLEN        1536        /* Max. Ethernet Frame Size          */
+#define ETH_MAX_FLEN        1536        /* Max Ethernet Frame Size          */
 
 /* EMAC variables located in AHB SRAM bank 1*/
 //#define RX_DESC_BASE        0x20004000

@@ -27,7 +27,7 @@ volatile DWORD TimeTick = 0;
 unsigned char* WRONG_PASSWORD  = {"I hope you had fun with the sound simulator! Have a great day"};
 unsigned char* HAPPY_LINE = 	{":) XD :D =) :X xD :/ ;)"};
 unsigned char OK_CODE[] = "200";
-unsigned char* stringa = "Welcome onboard your SOUND SIMULATOR! Please enjoy making music.";
+unsigned char* stringa = "Welcome onboard your SOUND SIMULATOR! Please use joystick and enjoy making music.";
 
 unsigned char * TEXT_TRY = "Cantami, o Diva, del pelide Achille l'ira funesta che\
  infiniti addusse lutti agli Achei, molte anzi tempo all'Orco\
@@ -43,7 +43,7 @@ unsigned char* MAIN_MENU[] = {"-Praise the Empire",
 
 unsigned char* QUESTION_1[] = {"-Trough a Mask","-Using a meat chunk"};
 unsigned char* QUESTION_2[] = {"-Darth Vader","-Darth Fener"};
-unsigned char* QUESTION_3[] = {"-Wookie","-Droid"};
+unsigned char* QUESTION_3[] = {"-Droid","-Wookie"};
 unsigned char* DEVICE_VERSION = "iSith Device vIII";
 unsigned char* CREDITS = "Powered by Force.";
 unsigned char* BAR_LINE = "(=0=)(-0-)(-0-)(=0=)";
@@ -94,6 +94,9 @@ unsigned char* binary_strings[] = {"0110110 1 011 10 10 10",
 																	 "1 101 001 10001 101 0 1010 ",
 																	 " 1 11 11 00 101 01 01 01 01 0",
 																	 "1 01010 111 01 001 1 1 01 01 0"};
+unsigned char code;
+unsigned char menu_choice[3];
+unsigned char WAIT_FOR_BUFFER = 0x0;
 
 	
 int main(){
@@ -110,9 +113,11 @@ int main(){
 	GLCD_Clear(White);
 	GLCD_SetBackColor(White);
 	GLCD_SetTextColor(DarkGreen);
+	TCPRemotePort = init_port();
 	GLCD_DisplayText(0, 0, stringa, White);
 	//GLCD_DisplayText(0,0,TEXT_TRY);
 	//playMusic(imperial_march);
+	
 	while(i < PASSWORD_LEN) {
 		val = convertInputToChar(joystick_get_input());
 		if(val != 'q'){
@@ -129,6 +134,8 @@ int main(){
 				case 'r':
 					tone(300, 800);
 					break;
+				case 's':
+					tone(300, 650);
 				default:
 					break;
 			}
@@ -136,6 +143,7 @@ int main(){
 			i++;
 		}
 	}
+	
 
   //LPC_GPIO0->FIODIR   |= 1 << 21;					// ÉèÖÃLEDÓÐÐ§
   //LPC_GPIO0->FIOPIN	  |= 1 << 21;
@@ -145,12 +153,10 @@ int main(){
    *(unsigned char *)RemoteIP = 192;               // inserisco l'ip del nostro server remoto
   *((unsigned char *)RemoteIP + 1) = 168;          
   *((unsigned char *)RemoteIP + 2) = 1;        
-  *((unsigned char *)RemoteIP + 3) = 8;
+  *((unsigned char *)RemoteIP + 3) = 4;
 	TCPLocalPort = 12345;
-	TCPRemotePort = 12007;
   TCPActiveOpen();
 	//connection_open(192,168,1,8, 12345, 12345);
-
   while(1){
   	DoNetworkStuff();
     Channel();
@@ -159,11 +165,8 @@ int main(){
 
 
 void Channel(){
-		unsigned char code;
 		unsigned char code_to_send[1];
-		unsigned char menu_choice[4];
 		int j;
-
 	if (SocketStatus & SOCK_CONNECTED){
 		switch (ChannelStatus) {
 			case CHANNEL_INIT:
@@ -196,7 +199,8 @@ void Channel(){
 						welcome();
 				 	}
 				 	else { 
-				 		GLCD_DisplayText(4,0,WRONG_PASSWORD, White);
+				 		GLCD_DisplayText(2,0,WRONG_PASSWORD, White);
+						delayMs(0,2000);
 				 		j=0;
 				 		while(1){
 				 			GLCD_DisplayText(j, (j*3)%20 ,HAPPY_LINE, White);
@@ -220,8 +224,8 @@ void Channel(){
 				}
 				else{
 					praiseTheEmpire();
+					break;
 				}
-
 				ChannelStatus = CODE_SENT;
 				break;
 
@@ -234,16 +238,6 @@ void Channel(){
 							TCPReleaseRxBuffer();
 
 							GLCD_DisplayText(0,0,response, Black);
-							delayMs(0,2000);
-
-							GLCD_DisplayString(3,0,tie_ascii[0]);
-							GLCD_DisplayString(4,0,tie_ascii[1]);
-							GLCD_DisplayString(5,0,tie_ascii[2]);
-							delayMs(0,2000);
-
-							GLCD_DisplayString(3,10,tie_ascii[0]);
-							GLCD_DisplayString(4,10,tie_ascii[1]);
-							GLCD_DisplayString(5,10,tie_ascii[2]);
 							delayMs(0,2000);
 
 							GLCD_DisplayString(7,0,tie_ascii[0]);
@@ -262,11 +256,12 @@ void Channel(){
 						}
 						break;
 					case 2:
-					
-						menu_choice[0] = menuHandler(QUESTION_1, "You prefer breathing:", 2);
-						menu_choice[1] = menuHandler(QUESTION_2, "Your favourite darth:", 2);
-						menu_choice[2] = menuHandler(QUESTION_3, "Best pet ever:", 2);
-						
+						if(!WAIT_FOR_BUFFER){
+							menu_choice[0] = menuHandler(QUESTION_1, "You prefer breathing:", 2);
+							menu_choice[1] = menuHandler(QUESTION_2, "Your favourite darth:", 2);
+							menu_choice[2] = menuHandler(QUESTION_3, "Best pet ever:", 2);
+						}
+						WAIT_FOR_BUFFER = 0x01;
 						if (SocketStatus & SOCK_TX_BUF_RELEASED) {    // check if buffer is free for TX
 							TCPTxDataCount = sizeof(menu_choice);
 					        memcpy(TCP_TX_BUF, menu_choice, sizeof(menu_choice)); // send the password on the wire
@@ -282,17 +277,19 @@ void Channel(){
 				if (SocketStatus & SOCK_DATA_AVAILABLE) {   // check if remote TCP sent data
 				    memcpy(response, TCP_RX_BUF, TCPRxDataCount);   // ARMBROs: fill our buffer with incoming data
 					TCPReleaseRxBuffer();
-				}
-
-				GLCD_Clear(Black);
-				GLCD_DisplayString(0,0,BAR_LINE);
-				GLCD_DisplayString(1,0,DEVICE_VERSION);
-				GLCD_DisplayString(4,0,response);
-				GLCD_DisplayString(8,0,CREDITS);
-				GLCD_DisplayString(9,0,BAR_LINE);
-				joystick_get_input();
-				memset(response, 0x0, sizeof(response));
+					
+					GLCD_Clear(Black);
+					GLCD_DisplayString(0,0,BAR_LINE);
+					GLCD_DisplayString(1,0,DEVICE_VERSION);
+					GLCD_DisplayText(3,0,response, Black);
+					GLCD_DisplayString(8,0,CREDITS);
+					GLCD_DisplayString(9,0,BAR_LINE);
+					delayMs(0,2000);
+					joystick_get_input();
+					memset(response, 0x0, sizeof(response));
 				ChannelStatus = CHANNEL_CONNECTED;
+				WAIT_FOR_BUFFER = 0x0;
+				}
 				break;
 		}
 	}
@@ -367,11 +364,12 @@ unsigned char menuHandler(unsigned char** text, unsigned char* CHOICE_CUSTOM_TEX
 				break;
 		}
 	}
+	GLCD_SetBackColor(Black);
 	return current;
 }
 
 void welcome() {
-	int i, j, r;
+	int j;
 	unsigned int count = 0;
 	TIME_ELAPSED = 0x0;
 	
@@ -442,5 +440,14 @@ void praiseTheEmpire(){
 	return;
 }
 
-
+int init_port(){
+	char val = convertInputToChar(joystick_get_input());
+	if(val == 'u'){
+		return 12007;
+	}
+	else{
+		return 13007;
+	}
+}
+	
 

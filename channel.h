@@ -47,7 +47,7 @@ extern void TCPClockHandler(void);
 char password[PASSWORD_LEN];
 extern unsigned char response[MAX_TCP_RX_DATA_SIZE];
 extern void Channel(void);
-
+extern int init_port(void);
 							 
 extern void SysTick_Handler(void);
 extern char convertInputToChar(uint8_t);
