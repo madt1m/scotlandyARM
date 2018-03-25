@@ -46,7 +46,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 				req = urllib.request.Request('http://api.hostip.info/get_html.php?ip=' + '172.20.238.136' + '&position=true', headers={'User-Agent': 'Mozilla/5.0'})
 				pos = urllib.request.urlopen(req).read().decode().splitlines()
 				'''
-				url = "http://api.hostip.info/get_html.php?ip=" + addr[0] + "&position=true"
+				url = "http://api.hostip.info/get_html.php?ip=" + '172.20.238.136' + "&position=true"
 				print(url)
 				headers = {'User-Agent' : 'Mozilla/5.0'}
 				req = urllib.request.Request(url, headers = headers)
@@ -59,8 +59,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 				print(pos)
 				pos = pos.splitlines()
 				print(pos)
+				'''
 				res = pos[0] + " " +  pos[3] + " " + pos[4] + " " + pos[5]
-				
+				'''
+				res = 'Country: European Union(EU) City: (Unknown City) IP: 130.192.27.17'
 				conn.send(res.encode())
 				print(res)
 				print("data sent back")
