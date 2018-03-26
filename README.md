@@ -38,6 +38,6 @@ To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0
 letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 # Credits
-* Pietro Francesco Tirenna [github URL]
+* Pietro Francesco Tirenna https://github.com/madt1m
 * Lorenzo Santolini [github URL]
 * Professors Paolo Montuschi, Ernesto Sanchez and Paolo Bernardi for this unique opportunity of learning and self-improvement.
