@@ -1,9 +1,0 @@
-.\glcd_spi_lpc1700.o: scotlandyARM\GLCD_SPI_LPC1700.c
-.\glcd_spi_lpc1700.o: C:\Keil\ARM\Inc\NXP\LPC17xx\lpc17xx.h
-.\glcd_spi_lpc1700.o: C:\Keil\ARM\CMSIS\Include\core_cm3.h
-.\glcd_spi_lpc1700.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
-.\glcd_spi_lpc1700.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
-.\glcd_spi_lpc1700.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
-.\glcd_spi_lpc1700.o: C:\Keil\ARM\Inc\NXP\LPC17xx\system_LPC17xx.h
-.\glcd_spi_lpc1700.o: scotlandyARM\GLCD.h
-.\glcd_spi_lpc1700.o: scotlandyARM\Font_24x16.h
