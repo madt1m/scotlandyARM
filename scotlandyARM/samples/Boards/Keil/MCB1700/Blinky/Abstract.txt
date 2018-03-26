@@ -1,0 +1,21 @@
+The 'Blinky' project is a simple program for the LPC1768
+microcontroller using Keil 'MCB1700' Evaluation Board, compliant 
+to Cortex Microcontroller Software Interface Standard (CMSIS v2.0).
+
+Example functionality:                                                   
+ - Clock Settings:
+   - XTAL  =  12 MHz
+   - CCLK  = 100 MHz
+
+ - Sys Timer is used in interrupt mode
+ - LEDs are blinking with speed depending on SysTick timer interrupt period
+ 
+
+The Blinky program is available in different targets:
+
+  LPC1768 Flash:       configured for on-chip Flash
+                       Valid Flash Signature is created with ElfDwT tool.
+                       See "Options for Target" - "User")
+
+  LPC1768 RAM:        runs from Internal RAM located on chip
+                       (may be used for target debugging)

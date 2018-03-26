@@ -1,0 +1,23 @@
+Starting my voyage into the obscurities of the German TCP/IP stack code. I hope the reader will be capable of understading what I, for sure, am going to fully understand.
+
+I decided for a top-down approach. This means that I'm starting the trip with the easyweb.c file, precisely from the main() function.
+
+InitOsc() and InitPorts() are both commented from Keil, apparently the project doesn't need anymore to initialize the oscillators; will look more for that.
+After an already known SystemInit() - basic startup functions of the board - the code calls a SysTick_Config with a given value of ms, this calls an interrupt, which gives the possibility to perform time-measured operations on the program, like context switching in a multitasking cpu. 
+The P0.21 direction is set to 1(OUTPUT) and its value is written to 1 (Bad practice, should have done this through FIOSET, will fix)
+LPC_GPIO2->FIODIR, pin 0 is set to OUTPUT. This is the first LED.
+
+Now...about this line:
+LPC_PINCON->PINSEL3 |= 3ul << 30.
+This writes 11 value in the PINSEL[31:30] bits. Actually, this selects the function for P1.31 to be AD0.5 (more later?)
+
+Ok now, after other ADC (not needed) tweaks, let's deep into TCPLowLevelInit() from tcpip.c
+
+Actually, it is quite a small function:
+Init_EMAC(), more later;
+TransmitControl (what's this?) to zero, Flags to zero, TCPStateMachine zero, and SocketStatus zero...just initializing it. Now, what Init_EMAC do? Oh my. 
+
+
+Init_EMAC()
+I'll try to describe what happens here using the Ethernet chapter on the reference manual.
+But today I'm falling asleep, so...tomorrow.
