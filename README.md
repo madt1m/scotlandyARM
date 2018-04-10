@@ -16,8 +16,7 @@ The peripherals and functions used within the project:
 
 For more informations about the project idea, libraries used and implemented, and source code, feel free to check our video on YouTube :)
 
-[Link here]
-
+https://www.youtube.com/watch?v=ZmhDm1cvca0
 
 # Installation
 * Download the project and load it into Keil uVision4 (http://www.keil.com/)
@@ -33,8 +32,8 @@ the paths.
 could block the communication between the board and the machine.
 
 # License
-This work is licensed under the Creative Commons Attribution 3.0 Italy License. 
-To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/it/ or send a 
+This work is licensed under the Creative Commons Attribution 3.0 Italy License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/it/ or send a
 letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 # Credits
