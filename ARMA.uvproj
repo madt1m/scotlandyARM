@@ -584,13 +584,6 @@
         </Group>
         <Group>
           <GroupName>Abstract</GroupName>
-          <Files>
-            <File>
-              <FileName>notes_easyweb.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\scotlandyARM\notes_easyweb.txt</FilePath>
-            </File>
-          </Files>
         </Group>
       </Groups>
     </Target>
