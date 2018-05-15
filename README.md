@@ -28,7 +28,8 @@ the paths.
 * Flash the board through uVision
 * Enjoy :)
 
-**NOTE**: Make sure that you have correctly set the Python server on a machine listening on the Remote IP defined in the source! Firewalls
+**NOTE**: 
+Make sure that you have correctly set the Python server on a machine listening on the Remote IP defined in the source! Firewalls
 could block the communication between the board and the machine.
 
 # License
